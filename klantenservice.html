@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 
 <head>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
             </div>
             <div class="header-right">
                 <div class="header-group-item">Bestemmingen</div>
-                <div class="header-group-item">Klantenservice</div>
+                <div class="header-group-item"><b>Klantenservice</b></div>
                 <div class="header-group-item">Hotels</div>
 
                 <div class="header-group-item login marginleft">Login</div>
@@ -33,26 +33,25 @@
         </nav>
         <nav class="header-bottom">
             <ul class="header-bottom-box">
-                <li class="header-bottom-item selected"><i class="fa-solid fa-plane-departure"></i><a>Vluchten</a></i>
-                <li class="header-bottom-item"><i class="fa-solid fa-bed"></i><a>Verblijven</a></li>
-                <li class="header-bottom-item"><i class="fa-solid fa-globe"></i><a>Booking</a></li>
+                <li class="header-bottom-item selected"><i class="fa-solid fa-plane-departure"></i><a>Contactformulier</a></i>
+                <li class="header-bottom-item"><i class="fa-solid fa-bed"></i><a>Contactgegevens</a></li>
+                <li class="header-bottom-item"><i class="fa-solid fa-globe"></i><a>Locaties</a></li>
             </ul>
         </nav>
     </header>
-    <div class="cover">
-        <h1 class="coverlabel" style="color: white;">Ontdek wat er is</h1>
-        <form class="flex-form">
-            <label for="from">
-                <i class="ion-location"><i class="fa-solid fa-magnifying-glass"></i></i>
-            </label>
-            <input type="search" placeholder="Waar wil je naar toe?">
-            <input type="submit" value="Zoeken">
-        </form>
-    </div>
+    
     <div class="top-box">
-
+        <div class="contactform">
+            <h2>Contactformulier</h2>
+            <p>U kunt ons een bericht sturen voor vragen, klachten of feedback. Wij doen ons best om binnen 2 werkdagen te reageren.</p>
+            <input id="name" placeholder="Naam"> <br>
+            <input id="email" placeholder="E-mail"> <br>
+            <textarea id="message" placeholder="Bericht"></textarea> <br>
+            <button id="send">Verzenden</button>
+        </div>
     </div>
 
 </body>
 </html>
+
 <script src="javascript/code.js"></script>
