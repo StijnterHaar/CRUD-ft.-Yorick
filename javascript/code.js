@@ -12,3 +12,4 @@ window.onload = function() {
     fadeIn("html", "0.5s", 1 );
     fadeIn(".coverlabel", "3s", 1 );
 };
+
