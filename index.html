@@ -28,16 +28,20 @@
                 <div class="header-group-item"><a href="klantenservice.html">Klantenservice</a></div>
                 <div class="header-group-item"><a href="index.html"><b>Home</b></a></div>
 
-                <div class="header-group-item login marginleft">Login</div>
-                <div class="header-group-item login">Register</div>
+                <div class="header-group-item login marginleft"><a onclick="openForm()">Login</a></div>
+                <div class="header-group-item login"><a onclick="openForm()">Register</a></div>
 
             </div>
         </nav>
+
         <nav class="header-bottom">
+
             <ul class="header-bottom-box">
-                <li class="header-bottom-item selected"><i class="fa-solid fa-bed"></i><a href="index.html">Hotels</a></li>
-                <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a href="#">Vluchten</a></i>
-                <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="#">Autoverhuur</a></li>
+                <li class="header-bottom-item selected"><i class="fa-solid fa-bed"></i><a href="index.html">Hotels</a>
+                </li>
+                <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a href="vluchten.html">Vluchten</a></i>
+                <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="autoverhuur.html">Autoverhuur</a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -51,6 +55,27 @@
             <input type="submit" value="Zoeken">
         </form>
     </div>
+    <div class="form-popup" id="myForm">
+        <form action="validate.php" method="post">
+            <div class="login-box">
+                <h1>Login</h1>
+                <div class="progress"><div class="progress-value"></div></div>
+
+                <div class="textbox">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <input type="text" placeholder="Username" name="adminname" value="">
+                </div>
+
+                <div class="textbox">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input type="password" placeholder="Password" name="password" value="">
+                </div>
+
+                <input class="button" type="submit" name="login" value="Sign In">
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </div>
+        </form>
+    </div>
     <div class="top-box">
         <div class="box-container">
             <div class="box-title">
@@ -62,7 +87,9 @@
                     <div class="card__info-hover">
 
                     </div>
-                    <div class="card__img"></div>
+                    <div class="card__img">
+                        <img src="cardimages/amsterdam.jpg">
+                    </div>
                     <a href="#" class="card_link">
                         <div class="card__img--hover"></div>
                     </a>
@@ -75,7 +102,7 @@
                 </article>
 
 
-                <article class="card card--2">
+                <article class="card card--1">
                     <div class="card__info-hover">
                         <svg class="card__like" viewBox="0 0 24 24">
                             <path fill="#000000"
@@ -83,7 +110,9 @@
                         </svg>
 
                     </div>
-                    <div class="card__img"></div>
+                    <div class="card__img">
+                        <img src="cardimages/berlin.jpg">
+                    </div>
                     <a href="#" class="card_link">
                         <div class="card__img--hover"></div>
                     </a>
@@ -94,7 +123,7 @@
                     </div>
                 </article>
 
-                <article class="card card--2">
+                <article class="card card--1">
                     <div class="card__info-hover">
                         <svg class="card__like" viewBox="0 0 24 24">
                             <path fill="#000000"
@@ -102,18 +131,18 @@
                         </svg>
 
                     </div>
-                    <div class="card__img"></div>
+                    <div class="card__img"> <img src="cardimages/ibiza.jpg"></div>
                     <a href="#" class="card_link">
                         <div class="card__img--hover"></div>
                     </a>
                     <div class="card__info">
                         <span class="card__category"> Reizen</span>
-                        <h3 class="card__title">Friesland</h3>
+                        <h3 class="card__title">Ibiza</h3>
                         <span class="card__by">Door <a href="#" class="card__author" title="author">TUI </a></span>
                     </div>
                 </article>
 
-                <article class="card card--2">
+                <article class="card card--1">
                     <div class="card__info-hover">
                         <svg class="card__like" viewBox="0 0 24 24">
                             <path fill="#000000"
@@ -121,7 +150,7 @@
                         </svg>
 
                     </div>
-                    <div class="card__img"></div>
+                    <div class="card__img"> <img src="cardimages/amsterdam.jpg"></div>
                     <a href="#" class="card_link">
                         <div class="card__img--hover"></div>
                     </a>
@@ -140,7 +169,7 @@
                     <div class="card__info-hover">
 
                     </div>
-                    <div class="card__img"></div>
+                    <div class="card__img"> <img src="cardimages/amsterdam.jpg"></div>
                     <a href="#" class="card_link">
                         <div class="card__img--hover"></div>
                     </a>
@@ -161,7 +190,7 @@
                         </svg>
 
                     </div>
-                    <div class="card__img"></div>
+                    <div class="card__img"> <img src="cardimages/berlin.jpg"></div>
                     <a href="#" class="card_link">
                         <div class="card__img--hover"></div>
                     </a>

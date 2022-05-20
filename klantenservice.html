@@ -26,31 +26,54 @@
                 <div class="header-group-item"><a href="klantenservice.html"><b>Klantenservice</b></a></div>
                 <div class="header-group-item"><a href="index.html">Home</a></div>
 
-                <div class="header-group-item login marginleft">Login</div>
-                <div class="header-group-item login">Register</div>
+                <div class="header-group-item login marginleft"><a onclick="openForm()">Login</a></div>
+                <div class="header-group-item login"><a onclick="openForm()">Register</a></div>
 
             </div>
         </nav>
         <nav class="header-bottom">
             <ul class="header-bottom-box">
                 <li class="header-bottom-item "><i class="fa-solid fa-bed"></i><a href="index.html">Hotels</a></li>
-                <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a href="">Vluchten</a></i>
-                <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="#">Autoverhuur</a></li>
+                <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a href="#">Vluchten</a></i>
+                <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="autoverhuur.html">Autoverhuur</a>
+                </li>
             </ul>
         </nav>
     </header>
 
+    <div class="form-popup" id="myForm">
+        <form action="validate.php" method="post">
+            <div class="login-box">
+                <h1>Login</h1>
+                <div class="progress"><div class="progress-value"></div></div>
+
+                <div class="textbox">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <input type="text" placeholder="Username" name="adminname" value="">
+                </div>
+
+                <div class="textbox">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input type="password" placeholder="Password" name="password" value="">
+                </div>
+
+                <input class="button" type="submit" name="login" value="Sign In">
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </div>
+        </form>
+    </div>
     <div class="top-box">
         <div class="box-container">
-        <div class="contactform">
-            <h2>Contactformulier</h2>
-            <p>U kunt ons een bericht sturen voor vragen, klachten of feedback. Wij doen ons best om binnen 2 werkdagen
-                te reageren.</p>
-            <input class="reverainput" id="name" placeholder="Naam"> <br>
-            <input class="reverainput" id="email" placeholder="E-mail"> <br>
-            <textarea class="reveratextarea" id="message" placeholder="Bericht"></textarea> <br>
-            <button class="reverabutton" id="send">Verzenden</button>
-        </div>
+            <div class="contactform">
+                <h2>Contactformulier</h2>
+                <p>U kunt ons een bericht sturen voor vragen, klachten of feedback. Wij doen ons best om binnen 2
+                    werkdagen
+                    te reageren.</p>
+                <input class="reverainput" id="name" placeholder="Naam"> <br>
+                <input class="reverainput" id="email" placeholder="E-mail"> <br>
+                <textarea class="reveratextarea" id="message" placeholder="Bericht"></textarea> <br>
+                <button class="reverabutton" id="send">Verzenden</button>
+            </div>
         </div>
     </div>
     </div>
