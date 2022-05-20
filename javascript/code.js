@@ -12,3 +12,13 @@ window.onload = function() {
     fadeIn("html", "0.5s", 1 );
     fadeIn(".coverlabel", "3s", 1 );
 };
+
+// Open login form
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+  
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+
