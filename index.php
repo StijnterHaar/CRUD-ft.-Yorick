@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,21 +58,35 @@
         </form>
     </div>
     <div class="form-popup" id="myForm">
+    <?php
+                include('php/validate.php'); // Includes Login Script
+                if(isset($_SESSION['login_user']))
+                echo "<a href='adminpage.php' style='color:white; padding-top: 15px; font-size: 15px;'>","Ingelogd als:  " . $_SESSION['login_user'] . "</a>";
+            else
+                echo '<a class="catolag-list-items" onclick="openForm()">Login</a>';
+                ?> 
         <form action="validate.php" method="post">
             <div class="login-box">
                 <h1>Login</h1>
+                <?php 
+                if(!empty($login_err)){
+                    echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                }        
+                ?>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="progress">
                     <div class="progress-value"></div>
                 </div>
 
                 <div class="textbox">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    <input type="text" placeholder="Username" name="adminname" value="">
+                    <input type="text" placeholder="Username" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?> value="<?php echo $username; ?>">
+                    <span class="invalid-feedback"><?php echo $gebruikersnaam; ?></span>
                 </div>
 
                 <div class="textbox">
                     <i class="fa fa-lock" aria-hidden="true"></i>
-                    <input type="password" placeholder="Password" name="password" value="">
+                    <input type="password" placeholder="Password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>>
                 </div>
 
                 <input class="button" type="submit" name="login" value="Sign In">

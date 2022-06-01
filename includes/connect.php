@@ -3,7 +3,7 @@
 $host = 'localhost';
 
 
-$db = 'minicrud';
+$db = 'revera';
 $user = 'root';
 $pass = '';
 $charset = 'utf8mb4';
