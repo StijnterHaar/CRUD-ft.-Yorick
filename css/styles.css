@@ -935,6 +935,7 @@ a {
 
 .stays2 .left {
   width: 35%;
+  
 }
 
 .stays2 .right {
@@ -943,15 +944,16 @@ a {
 
 .stay-item {
   display: flex;
-  border: 1px solid #ef3f5a;
-  border-left: 4px solid #ef3f5a;
+  background-color:#ef3f5a;
   margin: 10px;
+  color:white;
+  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3);
+  margin-top:30px;
 }
 .stay-item img {
   height: 137px;
 }
 .stay-item h1 {
-  color: #ef3f5a;
   font-size: 23px;
 }
 
@@ -979,15 +981,15 @@ a {
 }
 
 .popular-stays .sugg {
-  width: 18%;
-  border-radius: 5px;
+  width: 17%;
+  background-color:#ef3f5a;
+  box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3);
 }
 .popular-stays p {
-  border-bottom: 3px solid #ef3f5a;
-  border-left: 1px solid #ef3f5a;
-  border-right: 1px solid #ef3f5a;
-  padding: 5px;
-  color: #ef3f5a;
+  
+  padding: 10px;
+  padding-top:5px;
+  color: white;
 }
 
 .locationslist {
@@ -1005,4 +1007,18 @@ a {
   padding: 10px;
   color: white;
   margin: 10px;
+}
+
+.stay-info {
+  justify-content: space-evenly;
+  display: flex;
+}
+
+.stay-info-left {
+  border-right: 1px solid white;
+  padding-right:20px;
+}
+.stay-info-right {
+  margin-top: 31px;
+  margin-left:20px;
 }
