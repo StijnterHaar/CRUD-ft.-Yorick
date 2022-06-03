@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+    
 
 <head>
     <meta charset="UTF-8">
@@ -20,14 +20,14 @@
     <header class="main-header">
         <nav class="header-top">
             <div class="header-left">
-                <a href="index.html">
+                <a href="index.php">
                     <img class="header-image" src="images/logo.png">
                 </a>
             </div>
             <div class="header-right">
                 <div class="header-group-item"><a href="verblijven.html">Bestemmingen</a></div>
                 <div class="header-group-item"><a href="klantenservice.html">Klantenservice</a></div>
-                <div class="header-group-item"><a href="index.html"><b>Home</b></a></div>
+                <div class="header-group-item"><a href="index.php"><b>Home</b></a></div>
 
                 <div class="header-group-item login marginleft"><a onclick="openForm()">Login</a></div>
                 <div class="header-group-item login"><a onclick="openForm()">Register</a></div>
@@ -38,7 +38,7 @@
         <nav class="header-bottom">
 
             <ul class="header-bottom-box">
-                <li class="header-bottom-item selected"><i class="fa-solid fa-bed"></i><a href="index.html">Hotels</a>
+                <li class="header-bottom-item selected"><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a>
                 </li>
                 <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a
                         href="vluchten.html">Vluchten</a></i>
@@ -58,35 +58,22 @@
         </form>
     </div>
     <div class="form-popup" id="myForm">
-    <?php
-                include('php/validate.php'); // Includes Login Script
-                if(isset($_SESSION['login_user']))
-                echo "<a href='adminpage.php' style='color:white; padding-top: 15px; font-size: 15px;'>","Ingelogd als:  " . $_SESSION['login_user'] . "</a>";
-            else
-                echo '<a class="catolag-list-items" onclick="openForm()">Login</a>';
-                ?> 
+        
         <form action="validate.php" method="post">
             <div class="login-box">
                 <h1>Login</h1>
-                <?php 
-                if(!empty($login_err)){
-                    echo '<div class="alert alert-danger">' . $login_err . '</div>';
-                }        
-                ?>
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="progress">
                     <div class="progress-value"></div>
                 </div>
 
                 <div class="textbox">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    <input type="text" placeholder="Username" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?> value="<?php echo $username; ?>">
-                    <span class="invalid-feedback"><?php echo $gebruikersnaam; ?></span>
+                    <input type="text" placeholder="Username" name="adminname" value="">
                 </div>
 
                 <div class="textbox">
                     <i class="fa fa-lock" aria-hidden="true"></i>
-                    <input type="password" placeholder="Password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>>
+                    <input type="password" placeholder="Password" name="password" value="">
                 </div>
 
                 <input class="button" type="submit" name="login" value="Sign In">
