@@ -1,6 +1,6 @@
 <!DOCTYPE html>
+<?php include('includes/connect.php'); ?> 
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,6 +61,46 @@
             </div>
         </form>
     </div>
+    <div class="top-box">
+        <div class="box-container">
+            <div class="box-title">
+                <h1>Populaire vliegmaatschapijen</h1>
+            </div>
+            <ul class="locations-container2" id="scrollbarlijstauto">
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img  src="https://i0.wp.com/insideflyer.nl/wp-content/uploads/2019/05/KLM-logo.png?ssl=1">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Ryanair_logo_new.svg/1024px-Ryanair_logo_new.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EasyJet_logo.svg/1280px-EasyJet_logo.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/TUI_Logo_2016.svg/2560px-TUI_Logo_2016.svg.png">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Lufthansa_Logo_2018.svg/1280px-Lufthansa_Logo_2018.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Transavia_logo.svg/2560px-Transavia_logo.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
+                    </div>
+                </li>
+                
+
+            </ul>
+        </div>
     <div class="stays-all">
         <div class="stays">
             <div class="popular-stays">
@@ -87,7 +127,7 @@
             </div>
             <div class="stays2">
                 <div class="left">
-                    <p class="pbox">Zoeken op locatie</p>
+                    <p>Zoeken op locatie</p>
                     <div class="left-search">
                         <input class="reverainput" id="name" placeholder="Locatie of omgeving"> <button
                             class="reverabutton" id="send">Zoek</button>
@@ -111,33 +151,7 @@
                     </ul>
                 </div>
                 <div class="right">
-                    <div class="stay-item">
-                        <img src="https://i.ibb.co/pK6TVYR/losangeles.png">
-                        <div class="stay-info">
-                            <h1>Los Angeles</h1>
-                            <p>Begin: Dusseldorf Airport</p>
-                            <p>Afstand: 32398KM</p>
-                            <p>Beginprijs: $2093</p>
-                        </div>
-                    </div>
-                    <div class="stay-item">
-                        <img src="https://i.ibb.co/pK6TVYR/losangeles.png">
-                        <div class="stay-info">
-                            <h1>Sevilla</h1>
-                            <p>Begin: Dusseldorf Airport</p>
-                            <p>Afstand: 32398KM</p>
-                            <p>Beginprijs: $2093</p>
-                        </div>
-                    </div>
-                    <div class="stay-item">
-                        <img src="https://i.ibb.co/pK6TVYR/losangeles.png">
-                        <div class="stay-info">
-                            <h1>Athene</h1>
-                            <p>Begin: Dusseldorf Airport</p>
-                            <p>Afstand: 32398KM</p>
-                            <p>Beginprijs: $2093</p>
-                        </div>
-                    </div>
+                <?php include('php/reizen.php'); ?> 
                 </div>
             </div>
 </body>
