@@ -394,7 +394,8 @@ input[type="search"] {
 }
 
 .box-title {
-  margin: 20px;
+  margin-left:80px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .card__by {
@@ -701,11 +702,12 @@ a {
 }
 
 .locations-container2 {
-  margin: 20px;
   height: 150px;
   background-color: white;
-  display: flex;
+  width:100%;
+  display:flex;
   overflow-x: scroll;
+  justify-content: space-evenly;
 }
 
 .autoverhuurlogos {
@@ -714,8 +716,8 @@ a {
   justify-content: center;
   border: 1px solid;
   border-color: #66666640;
-  padding: 24px;
-  width: 200px;
+  padding: 20px;
+  width: 190px;
   height: 100px;
 }
 
@@ -975,6 +977,11 @@ a {
 .left-search {
   justify-content: space-around;
   display: flex;
+  margin-left:-25px;
+}
+
+.flightlist {
+  margin-top:80px;
 }
 
 .popular-stays {
