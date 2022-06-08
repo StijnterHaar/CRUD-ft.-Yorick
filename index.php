@@ -75,7 +75,7 @@
                     <i class="fa fa-lock" aria-hidden="true"></i>
                     <input type="password" placeholder="Password" name="password" value="">
                 </div>
-
+                <input class="button" type="submit" name="login" style="height: 20px; margin: 3, 0;" value="Sign In">
                 <input class="button" type="submit" name="login" value="Sign In">
                 <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </div>
