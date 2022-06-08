@@ -112,7 +112,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="header-right">
                 <div class="header-group-item"><a href="reizen.php">Bestemmingen</a></div>
                 <div class="header-group-item"><a href="klantenservice.php">Klantenservice</a></div>
-                <div class="header-group-item"><a href="index.php"><b>Home</b></a></div>
+                <div class="header-group-item"><a href="index.php">Home</a></div>
 
                 <div class="header-group-item login marginleft"><?php
                 include('includes/connect.php'); // Includes Login Script
@@ -135,7 +135,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <nav class="header-bottom">
 
             <ul class="header-bottom-box">
-                <li class="header-bottom-item selected"><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a>
+                <li class="header-bottom-item"><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a>
                 </li>
                 <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a
                         href="vluchten.php">Vluchten</a></i>
@@ -144,23 +144,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </ul>
         </nav>
     </header>
-    <div class="cover">
-        <h1 class="coverlabel" style="color: white; margin-bottom: 10px;">Ontdek wat er is</h1>
-        <form class="flex-form">
-            <label for="from">
-                <i class="ion-location"><i class="fa-solid fa-magnifying-glass"></i></i>
-            </label>
-            <input type="search" placeholder="Waar wil je naar toe?">
-            <input type="submit" value="Zoeken">
-        </form>
-    </div>
     <div class="form-popup" id="myForm">
-    <?php 
-        if(!empty($login_err)){
-            echo '<div class="alert alert-danger">' . $login_err . '</div>';
-        }        
-        ?>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="validate.php" method="post">
             <div class="login-box">
                 <h1>Login</h1>
                 <div class="progress">
@@ -169,147 +154,77 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 <div class="textbox">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                    <input type="text" placeholder="Username" name="adminname" value="">
                 </div>
 
                 <div class="textbox">
                     <i class="fa fa-lock" aria-hidden="true"></i>
-                    <input type="password" placeholder="Password" name="password" class="<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                    <input type="password" placeholder="Password" name="password" value="">
                 </div>
-                <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+
                 <input class="button" type="submit" name="login" value="Sign In">
                 <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </div>
         </form>
     </div>
     <div class="top-box">
-        <div class="box-container">
-            <div class="box-title">
-                <h1>Populaire Reizen</h1>
-                <p>Deze populaire bestemmingen hebben van alles te bieden</p>
+        <div class="box-container" style="padding-top: 10px;">
+            <div class="box-title" style="margin-left: 30px;">
+                <h1>Account Instellingen</h1>
+                <p>Beheer je instellingen</p>
             </div>
-            <ul class="locations-container">
-                <article class="card card--1">
-                    <div class="card__info-hover">
-
+            <div class="locations-container" style="display: flex; flex-wrap: wrap;">
+                <div class="settings-container">
+                    <div class="settings-icons"><span class="fa-solid fa-list-check fa-xl settings-icon"></span></div>
+                    <div class="settings-info" style="text-align: left;">
+                        <h2 style="padding-top: 25px; padding-left: 10px;">Persoonlijke informatie</h2>
+                        <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke informatie</p>
+                        <a href="#" style="color: #467fd3; padding-left: 10px;">Beheer informatie</a>
                     </div>
-                    <div class="card__img">
-                        <img src="cardimages/amsterdam.jpg">
+                </div>
+                <div class="settings-container">
+                    <div class="settings-icons"><span class="fa-solid fa-sliders fa-xl settings-icon"></span></div>
+                    <div class="settings-info" style="text-align: left;">
+                        <h2 style="padding-top: 25px; padding-left: 10px;">Voorkeuren</h2>
+                        <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke vookeuren</p>
+                        <a href="#" style="color: #467fd3; padding-left: 10px;">Beheer vookeuren</a>
                     </div>
-                    <a href="#" class="card_link">
-                        <div class="card__img--hover"></div>
-                    </a>
-                    <div class="card__info">
-                        <span class="card__category"> Reizen</span>
-                        <h3 class="card__title">Amsterdam</h3>
-                        <span class="card__by">Door <a href="#" class="card__author" title="author">D-reizen
-                            </a></span>
+                </div>
+                <div class="settings-container">
+                    <div class="settings-icons"><span class="fa-solid fa-bell fa-xl settings-icon"></span></div>
+                    <div class="settings-info" style="text-align: left;">
+                        <h2 style="padding-top: 25px; padding-left: 10px;">Email notificaties</h2>
+                        <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke notificaties</p>
+                        <a href="#" style="color: #467fd3; padding-left: 10px;">Beheer notificaties</a>
                     </div>
-                </article>
-
-
-                <article class="card card--1">
-                    <div class="card__info-hover">
-                        <svg class="card__like" viewBox="0 0 24 24">
-                            <path fill="#000000"
-                                d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-                        </svg>
-
+                </div>
+                <div class="settings-container">
+                    <div class="settings-icons"><span class="fa-solid fa-credit-card fa-xl settings-icon"></span></div>
+                    <div class="settings-info" style="text-align: left;">
+                        <h2 style="padding-top: 25px; padding-left: 10px;">Betalings instellingen</h2>
+                        <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke betalings
+                            instellingen</p>
+                        <a href="#" style="color: #467fd3; padding-left: 10px;">Beheer betalings instellingen</a>
                     </div>
-                    <div class="card__img">
-                        <img src="cardimages/berlin.jpg">
+                </div>
+                <div class="settings-container">
+                    <div class="settings-icons"><span class="fa-solid fa-egg fa-xl settings-icon"></span></div>
+                    <div class="settings-info" style="text-align: left;">
+                        <h2 style="padding-top: 25px; padding-left: 10px;">Easteregg</h2>
+                        <p style="padding-left: 10px; margin-bottom: 20px;">:)</p>
+                        <a href="#" style="color: blue; padding-left: 10px;"></a>
                     </div>
-                    <a href="#" class="card_link">
-                        <div class="card__img--hover"></div>
-                    </a>
-                    <div class="card__info">
-                        <span class="card__category"> Reizen</span>
-                        <h3 class="card__title">Germany ~ berlin</h3>
-                        <span class="card__by">Door <a href="#" class="card__author" title="author">Lufthansa</a></span>
+                </div>
+                <div class="settings-container">
+                    <div class="settings-icons"><span class="fa-solid fa-lock fa-xl settings-icon"></span></div>
+                    <div class="settings-info" style="text-align: left;">
+                        <h2 style="padding-top: 25px; padding-left: 10px;">Beveiliging</h2>
+                        <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke beveiliging</p>
+                        <a href="#" style="color: blue; padding-left: 10px;">Beheer beveiliging</a>
                     </div>
-                </article>
+                </div>
 
-                <article class="card card--1">
-                    <div class="card__info-hover">
-                        <svg class="card__like" viewBox="0 0 24 24">
-                            <path fill="#000000"
-                                d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-                        </svg>
-
-                    </div>
-                    <div class="card__img"> <img src="cardimages/ibiza.jpg"></div>
-                    <a href="#" class="card_link">
-                        <div class="card__img--hover"></div>
-                    </a>
-                    <div class="card__info">
-                        <span class="card__category"> Reizen</span>
-                        <h3 class="card__title">Ibiza</h3>
-                        <span class="card__by">Door <a href="#" class="card__author" title="author">TUI </a></span>
-                    </div>
-                </article>
-
-                <article class="card card--1">
-                    <div class="card__info-hover">
-                        <svg class="card__like" viewBox="0 0 24 24">
-                            <path fill="#000000"
-                                d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-                        </svg>
-
-                    </div>
-                    <div class="card__img"> <img src="cardimages/amsterdam.jpg"></div>
-                    <a href="#" class="card_link">
-                        <div class="card__img--hover"></div>
-                    </a>
-                    <div class="card__info">
-                        <span class="card__category"> Reizen</span>
-                        <h3 class="card__title">Discover the sea</h3>
-                        <span class="card__by">Door <a href="#" class="card__author" title="author">John Doe</a></span>
-                    </div>
-                </article>
-
-            </ul>
-        </div>
-        <div class="box-container2">
-            <ul class="locations-container">
-                <article class="big-card card--1">
-                    <div class="card__info-hover">
-
-                    </div>
-                    <div class="card__img"> <img src="cardimages/amsterdam.jpg"></div>
-                    <a href="#" class="card_link">
-                        <div class="card__img--hover"></div>
-                    </a>
-                    <div class="card__info">
-                        <span class="card__category"> Reizen</span>
-                        <h3 class="card__title">The Netherlands ~ Amsterdam</h3>
-                        <span class="card__by">by <a href="#" class="card__author" title="author">D-reizen
-                            </a></span>
-                    </div>
-                </article>
-
-
-                <article class="big-card card--2">
-                    <div class="card__info-hover">
-                        <svg class="card__like" viewBox="0 0 24 24">
-                            <path fill="#000000"
-                                d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" />
-                        </svg>
-
-                    </div>
-                    <div class="card__img"> <img src="cardimages/berlin.jpg"></div>
-                    <a href="#" class="card_link">
-                        <div class="card__img--hover"></div>
-                    </a>
-                    <div class="card__info">
-                        <span class="card__category"> Reizen</span>
-                        <h3 class="card__title">Germany ~ berlin</h3>
-                        <span class="card__by">by <a href="#" class="card__author" title="author">Lufthansa</a></span>
-                    </div>
-                </article>
-
-            </ul>
+            </div>
         </div>
         <div class="box-container"></div>
     </div>
