@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 
 <head>
     <meta charset="UTF-8">
@@ -19,72 +21,51 @@
     <header class="main-header">
         <nav class="header-top">
             <div class="header-left">
-                <a href="index.html">
+                <a href="index.php">
                     <img class="header-image" src="images/logo.png">
                 </a>
             </div>
             <div class="header-right">
-                <div class="header-group-item"><a href="verblijven.html">Bestemmingen</a></div>
-                <div class="header-group-item"><a href="klantenservice.html">Klantenservice</a></div>
-                <div class="header-group-item"><a href="index.html">Home</a></div>
-
-                <div class="header-group-item login marginleft"><a onclick="openForm()">Login</a></div>
-                <div class="header-group-item login"><a onclick="openForm()">Register</a></div>
+                <div class="header-group-item"><a href="reizen.php">Bestemmingen</a></div>
+                <div class="header-group-item"><a href="klantenservice.php">Klantenservice</a></div>
+                <div class="header-group-item"><a href="index.php">Home</a></div>
 
             </div>
         </nav>
+
         <nav class="header-bottom">
+
             <ul class="header-bottom-box">
-                <li class="header-bottom-item"><i class="fa-solid fa-bed"></i><a href="index.html">Hotels</a></li>
-                <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a href="#">Vluchten</a></i>
-                <li class="header-bottom-item "><i class="fa-solid fa-car"></i><a href="#">Autoverhuur</a></li>
+                <li class="header-bottom-item"><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a>
+                </li>
+                <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a
+                        href="vluchten.php">Vluchten</a></i>
+                <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="autoverhuur.php">Autoverhuur</a>
+                </li>
             </ul>
         </nav>
     </header>
-    <div class="form-popup" id="myForm">
-        <form action="validate.php" method="post">
-            <div class="login-box">
-                <h1>Login</h1>
-                <div class="progress">
-                    <div class="progress-value"></div>
-                </div>
-
-                <div class="textbox">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <input type="text" placeholder="Username" name="adminname" value="">
-                </div>
-
-                <div class="textbox">
-                    <i class="fa fa-lock" aria-hidden="true"></i>
-                    <input type="password" placeholder="Password" name="password" value="">
-                </div>
-
-                <input class="button" type="submit" name="login" value="Sign In">
-                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-            </div>
-        </form>
-    </div>
     <div class="top-box">
         <div class="box-container" style="padding-top: 10px;">
             <div class="box-title" style="margin-left: 30px;">
-                <h1>Account Instellingen</h1>
-                <p>Beheer je instellingen</p>
+                <h1>Persoonlijke Informatie</h1>
+                <p>Beheer je Persoonlijke Info</p>
             </div>
             <div class="locations-container" style="display: flex; flex-wrap: wrap;">
                 <div class="settings-container">
                     <div class="settings-icons"><span class="fa-solid fa-list-check fa-xl settings-icon"></span></div>
                     <div class="settings-info" style="text-align: left;">
-                        <h2 style="padding-top: 25px; padding-left: 10px;">Persoonlijke informatie</h2>
-                        <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke informatie</p>
-                        <a href="#" style="color: #467fd3; padding-left: 10px;">Beheer informatie</a>
+                        <h2 style="padding-top: 25px; padding-left: 10px;">Gebruikersnaam Aanpassen</h2>
+                        <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke gebruikersnaam</p>
+                        <a href="#" style="color: #467fd3; padding-left: 10px;">Klik om gebruikersnaam aan te passen</a>
                     </div>
                 </div>
                 <div class="settings-container">
                     <div class="settings-icons"><span class="fa-solid fa-sliders fa-xl settings-icon"></span></div>
                     <div class="settings-info" style="text-align: left;">
-                        <h2 style="padding-top: 25px; padding-left: 10px;">Voorkeuren</h2>
-                        <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke vookeuren</p>
-                        <a href="#" style="color: #467fd3; padding-left: 10px;">Beheer vookeuren</a>
+                        <h2 style="padding-top: 25px; padding-left: 10px;">Uitloggen</h2>
+                        <p style="padding-left: 10px; margin-bottom: 20px;">Niet je wachtwoord vergeten hé ;)</p>
+                        <a href="php/logout.php" style="color: #467fd3; padding-left: 10px;">Klik om uit te loggen</a>
                     </div>
                 </div>
                 <div class="settings-container">
@@ -107,8 +88,26 @@
                 <div class="settings-container">
                     <div class="settings-icons"><span class="fa-solid fa-egg fa-xl settings-icon"></span></div>
                     <div class="settings-info" style="text-align: left;">
-                        <h2 style="padding-top: 25px; padding-left: 10px;">Easteregg</h2>
-                        <p style="padding-left: 10px; margin-bottom: 20px;">:)</p>
+                        <div class="wrapper">
+                            <h2>Reset Password</h2>
+                            <p>Please fill out this form to reset your password.</p>
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
+                                <div class="form-group">
+                                    <h2>New Password</h2>
+                                    <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
+                                    <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+                                    <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                    <a class="btn btn-link ml-2" href="welcome.php">Cancel</a>
+                                </div>
+                            </form>
+                        </div> 
                         <a href="#" style="color: blue; padding-left: 10px;"></a>
                     </div>
                 </div>

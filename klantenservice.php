@@ -111,7 +111,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <div class="header-right">
                 <div class="header-group-item"><a href="reizen.php">Bestemmingen</a></div>
-                <div class="header-group-item"><a href="klantenservice.php">Klantenservice</a></div>
+                <div class="header-group-item"><a href="klantenservice.php"><b>Klantenservice</b></a></div>
                 <div class="header-group-item"><a href="index.php">Home</a></div>
 
                 <div class="header-group-item login marginleft"><?php
@@ -144,6 +144,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </ul>
         </nav>
     </header>
+
     <div class="form-popup" id="myForm">
     <?php 
         if(!empty($login_err)){
@@ -176,90 +177,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
     <div class="top-box">
         <div class="box-container">
-            <div class="box-title">
-                <h1>Populaire vliegmaatschapijen</h1>
+            <div class="contactform">
+                <h2>Contactformulier</h2>
+                <p>U kunt ons een bericht sturen voor vragen, klachten of feedback. Wij doen ons best om binnen 2
+                    werkdagen
+                    te reageren.</p>
+                <input class="reverainput" id="name" placeholder="Naam"> <br>
+                <input class="reverainput" id="email" placeholder="E-mail"> <br>
+                <textarea class="reveratextarea" id="message" placeholder="Bericht"></textarea> <br>
+                <button class="reverabutton" id="send">Verzenden</button>
             </div>
-            <ul class="locations-container2" id="scrollbarlijstauto">
-                <li class="autolijst">
-                    <div class="autoverhuurlogos">
-                        <img  src="https://i0.wp.com/insideflyer.nl/wp-content/uploads/2019/05/KLM-logo.png?ssl=1">
-                    </div>
-                </li>
-                <li class="autolijst">
-                    <div class="autoverhuurlogos">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Ryanair_logo_new.svg/1024px-Ryanair_logo_new.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
-                    </div>
-                </li>
-                <li class="autolijst">
-                    <div class="autoverhuurlogos">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EasyJet_logo.svg/1280px-EasyJet_logo.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
-                    </div>
-                </li>
-                <li class="autolijst">
-                    <div class="autoverhuurlogos">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/TUI_Logo_2016.svg/2560px-TUI_Logo_2016.svg.png">
-                    </div>
-                </li>
-                <li class="autolijst">
-                    <div class="autoverhuurlogos">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Lufthansa_Logo_2018.svg/1280px-Lufthansa_Logo_2018.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
-                    </div>
-                </li>
-                <li class="autolijst">
-                    <div class="autoverhuurlogos">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Transavia_logo.svg/2560px-Transavia_logo.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
-                    </div>
-                </li>
-                
-
-            </ul>
         </div>
-    <div class="stays-all">
-        <div class="stays">
-            <div class="popular-stays">
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-            </div>
-            <div class="stays2">
-                <div class="left">
-                    <p>Zoeken op locatie</p>
-                    <div class="left-search">
-                        <input class="reverainput" id="name" placeholder="Locatie of omgeving"> <button
-                            class="reverabutton" id="send">Zoek</button>
-                    </div>
-                    <ul class="flightlist">
-                    <p><b>Wij vliegen zowel naar:</b> </p>
-                         <?php include('php/regios.php'); ?> 
-                    </ul>
-                </div>
-                <div class="right">
-                <ul>
-                <li>
-                <?php include('php/reizen.php'); ?> 
-                </li>    
-                </ul>
-                
-                </div>
-            </div>
+    </div>
+    </div>
+
 </body>
 
 </html>
+
 <script src="javascript/code.js"></script>
