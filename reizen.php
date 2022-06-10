@@ -241,10 +241,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="stays2">
                 <div class="left">
                     <p>Zoeken op locatie</p>
-                    <div class="left-search">
-                        <input class="reverainput" id="name" placeholder="Locatie of omgeving"> <button
-                            class="reverabutton" id="send">Zoek</button>
-                    </div>
+                    <form class="left-search" name="search" method="post">
+            <input name="term">
+            <button name="search" id="startsearch">Zoeken</button>
+         </form>
                     <ul class="flightlist">
                     <p><b>Wij vliegen zowel naar:</b> </p>
                          <?php include('php/regios.php'); ?> 
@@ -253,7 +253,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="right">
                 <ul>
                 <li>
-                <?php include('php/reizen.php'); ?> 
                 </li>    
                 </ul>
                 
