@@ -245,26 +245,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <input class="reverainput" id="name" placeholder="Locatie of omgeving"> <button
                             class="reverabutton" id="send">Zoek</button>
                     </div>
-                    <ul class="locationslist">
-                        <li class="region"> <a>Amerika</a> </li>
-                        <li> <a>Los Angeles</a> </li>
-                        <li> <a>Las Vegas</a> </li>
-                        <li> <a>Washington</a> </li>
-                        <li class="region"> <a>Spanje</a> </li>
-                        <li> <a>Sevilla</a> </li>
-                        <li> <a>Barcelona</a> </li>
-                        <li> <a>Madrid</a> </li>
-                        <li> <a>Valencia</a> </li>
-                        <li class="region"> <a>Griekenland</a> </li>
-                        <li> <a>Athene</a> </li>
-                        <li> <a>Rhodos</a> </li>
-                        <li> <a>Patras</a> </li>
-                        <li> <a>Kos</a> </li>
-                        </li>
+                    <ul class="flightlist">
+                    <p><b>Wij vliegen zowel naar:</b> </p>
+                         <?php include('php/regios.php'); ?> 
                     </ul>
                 </div>
                 <div class="right">
+                <ul>
+                <li>
                 <?php include('php/reizen.php'); ?> 
+                </li>    
+                </ul>
+                
                 </div>
             </div>
 </body>
