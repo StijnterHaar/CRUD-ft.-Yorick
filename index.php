@@ -127,7 +127,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 echo "<a style='display:none'>" . $_SESSION['username'] . "</a>";
             else
                 echo '<a class="catolag-list-items" href="register.php">Register</a>';
-                ?></div>
+                ?>
+                
+            
+            
+            </div>
 
             </div>
         </nav>
