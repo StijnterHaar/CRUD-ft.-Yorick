@@ -6,10 +6,6 @@
   text-decoration: none;
 }
 
-html {
-  opacity: 0;
-}
-
 header {
   display: block;
 }
@@ -394,8 +390,8 @@ input[type="search"] {
 }
 
 .box-title {
-  margin-left:80px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 80px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .card__by {
@@ -704,10 +700,9 @@ a {
 .locations-container2 {
   height: 150px;
   background-color: white;
-  width:100%;
-  display:flex;
+  width: 100%;
+  display: flex;
   overflow-x: scroll;
-  justify-content: space-evenly;
 }
 
 .autoverhuurlogos {
@@ -784,7 +779,7 @@ a {
   border-radius: 2px;
   font-size: 18px;
   cursor: pointer;
-  margin-top: 2px;;
+  margin-top: 2px;
 }
 
 .progress {
@@ -850,28 +845,6 @@ a {
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
-}
-
-.calender {
-  margin-top: 30px;
-  width: 90%;
-  height: 300px;
-}
-
-.top-calender {
-  width: 100%;
-  height: 50px;
-  background-color: #d81936;
-}
-
-.bottom-calender {
-  width: 100%;
-  height: auto;
-}
-
-.calender-information {
-  display: flex;
-  height: 60px;
 }
 
 .personen {
@@ -978,11 +951,11 @@ a {
 .left-search {
   justify-content: space-around;
   display: flex;
-  margin-left:-25px;
+  margin-left: -25px;
 }
 
 .flightlist {
-  margin-top:80px;
+  margin-top: 80px;
 }
 
 .popular-stays {
@@ -1039,4 +1012,108 @@ a {
 .stay-info-right {
   margin-top: 31px;
   margin-left: 20px;
+}
+
+.leftbar {
+  border-radius: 2%;
+  position: absolute;
+  width: 160px;
+  height: 600px;
+  top: 1%;
+  left: 1%;
+  background-image: linear-gradient(rgb(102, 101, 101), rgb(63, 63, 63));
+}
+
+.line {
+  width: auto;
+  height: 1px;
+  background-color: white;
+}
+
+.leftitems {
+  justify-content: center;
+  display: block;
+  margin: 10px;
+  height: 80%;
+  width: 20px;
+}
+
+.leftitems i {
+  margin-bottom: 10px;
+}
+
+.rightbar {
+  width: 100%;
+  background-color: #e4e2e2;
+  display: block;
+}
+
+.topbar {
+  position: relative;
+  top: 5%;
+  width: 80%;
+  height: auto;
+  margin-left: 200px;
+  display: flex;
+}
+
+.topbar .box2 {
+  border-radius: 2%;
+  background-color: #f8f8f8;
+  width: 20%;
+  height: 170px;
+  margin: 10px;
+  clip-path: polygon(0% 0%, 120% 0%, 120% 120%, 0% 120%);
+}
+
+.boxh {
+  border-radius: 2%;
+  width: 100%;
+  height: 130px;
+}
+
+.boxd {
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.middlecontainer {
+  margin-left: 210px;
+  display: flex;
+  width: auto;
+  height: 500px;
+  margin-top: 10px;
+}
+
+.middlebar1 {
+  display: flex;
+  width: 50%;
+  height: 400px;
+  margin-top: 50px;
+  background-color: #f8f8f8;
+  border-radius: 1%;
+}
+
+.middlebar2 {
+  margin-left: 30px;
+  display: block;
+  width: 40%;
+  height: 400px;
+  margin-top: 50px;
+  background-color: #f8f8f8;
+  border-radius: 1%;
+}
+
+.product-display .product-display-table {
+  width: 100%;
+  text-align: center;
+}
+
+.product-display {
+  overflow-y: scroll;
+  height: 400px;
+}
+
+.product-display .product-display-table a {
+  width: 100px;
 }

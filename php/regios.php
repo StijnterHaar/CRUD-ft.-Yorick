@@ -11,6 +11,5 @@
                     ?> <li><?php echo $product['stad']; ?>, <?php echo $product['land']; ?> </a></li> <?php
                 }
 
-                
             
             ?> 

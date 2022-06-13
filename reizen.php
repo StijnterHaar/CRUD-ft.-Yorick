@@ -247,7 +247,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                     <ul class="flightlist">
                     <p><b>Wij vliegen zowel naar:</b> </p>
-                         <?php include('php/regios.php'); ?> 
+                    <?php
+                    
+                        $sql2 = "SELECT DISTINCT * FROM `regio`";
+                        $stmt2 = $connect->prepare($sql2);
+                        $stmt2->execute();
+
+                        $producten = $stmt2->fetchAll();
+                        foreach ($producten as $product) {
+                            ?> <li><?php echo $product['stad']; ?>, <?php echo $product['land']; ?> </a></li> <?php
+                        }
+                        ?> 
                     </ul>
                 </div>
                 <div class="right">
