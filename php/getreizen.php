@@ -1,15 +1,11 @@
 <?php
-if (isset($_POST["search"])) {
-            $sql = "SELECT * FROM reizen WHERE locatie=:term";
+
+            $sql = "SELECT * FROM `reizen`";
             $stmt = $connect->prepare($sql);
-            $stmt->bindParam(":term", $_POST['term']);
             $stmt->execute();
             $result = $stmt->fetchAll();
-            echo "Resultaten voor zoekactie: ";
             foreach ($result as $value) {
-            ?>  
-
-
+            ?>
 
                     <div class="stay-item">
                         <img src=<?php echo $value['foto']; ?>>
@@ -36,11 +32,7 @@ if (isset($_POST["search"])) {
                         </div>
                     </div>
                  <?php
-            }
+                }
                 
                 
-            
-} else {
-    include_once ('php/getreizen.php');
-}
-?>
+            ?> 

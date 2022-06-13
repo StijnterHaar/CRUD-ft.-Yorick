@@ -138,7 +138,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <li class="header-bottom-item selected"><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a>
                 </li>
                 <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a
-                        href="vluchten.php">Vluchten</a></i>
+                        href="reizen.php">Vluchten</a></i>
                 <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="autoverhuur.php">Autoverhuur</a>
                 </li>
             </ul>

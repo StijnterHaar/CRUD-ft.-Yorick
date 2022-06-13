@@ -12,19 +12,6 @@ $username_err = $password_err = $login_err = "";
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Check if username is empty
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
-    } else{
-        $username = trim($_POST["username"]);
-    }
-    
-    // Check if password is empty
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
     
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
@@ -138,7 +125,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <li class="header-bottom-item"><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a>
                 </li>
                 <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a
-                        href="vluchten.php">Vluchten</a></i>
+                        href="reizen.php">Vluchten</a></i>
                 <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="autoverhuur.php">Autoverhuur</a>
                 </li>
             </ul>
@@ -240,10 +227,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <div class="stays2">
                 <div class="left">
-                    <p>Zoeken op locatie</p>
+                    <p>Zoeken op stad:</p>
                     <form class="left-search" name="search" method="post">
-            <input name="term">
-            <button name="search" id="startsearch">Zoeken</button>
+            <input class="reverainput" name="term">
+            <button class="reverabutton" name="search" id="startsearch">Zoeken</button>
          </form>
                     <ul class="flightlist">
                     <p><b>Wij vliegen zowel naar:</b> </p>
@@ -251,6 +238,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </ul>
                 </div>
                 <div class="right">
+                    <?php include('php/searchorgetall.php')?>;
                 <ul>
                 <li>
                 </li>    
