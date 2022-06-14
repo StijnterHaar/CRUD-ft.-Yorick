@@ -7,7 +7,7 @@
             foreach ($result as $value) {
             ?>
 
-                    <div class="stay-item">
+                    <div  class="stay-item">
                         <img src=<?php echo $value['foto']; ?>>
 
                         <div class="stay-info">
@@ -18,7 +18,7 @@
                             <p>Vanaf vliegveld: <?php echo $value['beginplek']; ?></p>
                             <p>Naar vliegveld: <?php echo $value['eindplek']; ?></p>
                             </div>
-                            <div class="stay-info-right">
+                            <div    class="stay-info-right">
                             
                             <?php 
                             if ($value['retour'] == 1)  
@@ -27,10 +27,17 @@
                                echo "Retour: Nee <br>" . "Startdatum: " . $value['startDatum'] 
                             ?>
 
-                            </div>
 
+                         
                         </div>
+                        <a href="reisinformatie.php?id=<?php echo $value['reisID']; ?>">
+                                        <span style="display: block;">
+                                            <button class="reverabutton">Informatie / Boeken</button>
+                                        </span>
+                             </a>
                     </div>
+                    </div>
+                               
                  <?php
                 }
                 

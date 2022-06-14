@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+    <?php include ('includes/connect.php');?>
 
 <head>
     <meta charset="UTF-8">
@@ -40,6 +41,7 @@
             </ul>
         </nav>
     </header>
+    
 
     <div class="form-popup" id="myForm">
         <form action="validate.php" method="post">
@@ -67,16 +69,36 @@
     <div class="top-box" style="margin-bottom: 60px;">
         <div class="box-container" style="height: 400px; display: flex;">
             <div class="box1" style="width: 50%;">
-                <div class="reisinformatieimage"><img src="cardimages/amsterdam.jpg"></div>
+                <div class="reisinformatieimage"><img src=""></div>
             </div>
             <div class="box2" style="width: 50%; margin-left: 20px;">
                 <div class="insidebox1">
                     <span class="card__by">by <a href="#" class="card__author" title="author">D-reizen
                         </a></span>
-                    <h1 style="margin-bottom: 30px;">REISNAAM</h1>
-                    <a>Hier komt nuttige informatie te staan voor de opvulling van de reis
-                        informatie door middel van php gebeuren</a>
-                </div>
+                    <h1 style="margin-bottom: 30px;">
+                    <?php
+                            $sql = "SELECT * FROM reizen WHERE reisID=:term";
+                            $stmt = $connect->prepare($sql);
+                            $stmt->bindParam(":term", $_GET['id']);
+                            $stmt->execute();
+                            $result = $stmt->fetchAll();
+                            foreach ($result as $value) {
+                                echo $value['locatie'];
+                            }
+                    ?>
+                </h1>
+                        </div>
+                <?php 
+                echo "Vliegen vanaf: " . $value['beginplek']; ?> <br> <?php 
+                echo "Vliegen naar: " . $value['eindplek']; ?> <br> <?php 
+
+                echo "Kosten: €" . $value['kosten']; ?> <br> <?php 
+                echo "Retour: " .  $value['retour']; ?> <br> <?php 
+                echo "Startdatum: " . $value['startDatum']; ?> <br> <?php 
+                echo "Einddatum: " . $value['eindDatum']; ?> <br> <?php 
+
+                ?>              
+                
                 <div class="insidebox2" style="display: flex; height: 40px; margin-bottom: 100px;">
                     <div class="rate">
                         <input type="radio" id="star5" name="rate" value="5" />
@@ -96,6 +118,7 @@
                 </div>
             </div>
         </div>
+  
         <div class="box-container" style="border-top-style: hidden;">
             <a style="margin-top: 10px; font-size: 30px;">Selecteer data om prijzen en beschikbaarheid te zien (kan
                 inclusief Genius-prijzen zijn)</a>
