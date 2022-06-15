@@ -35,7 +35,7 @@ if (isset($_SESSION['username']) == true) {
             <div class="line"></div>
             <div class="leftitems">
                 <i class="fa-solid fa-house-chimney"><a style="color: white; margin-left: 5px;"
-                        href="cataloge.php">Home</a></i>
+                        href="index.php">Home</a></i>
                 <i class="fa-solid fa-envelope"
                     style="background-color: #db2068; box-shadow: -0.55rem 0 0 #db2068, 3.35rem 0 0 #db2068; padding: .18em 0;"><a
                         style="color: white; margin-left: 5px;">Dashboard</a></i>
@@ -68,7 +68,7 @@ if (isset($_SESSION['username']) == true) {
             <div class="middlebar2">
                 <?php
 
-            $sql = "SELECT * FROM products";
+            $sql = "SELECT * FROM reizen";
             $stmt = $connect->prepare($sql);
             $stmt->execute();
             $result = $stmt->fetchAll();
@@ -79,25 +79,47 @@ if (isset($_SESSION['username']) == true) {
                     <table class="product-display-table">
                         <thead>
                             <tr>
-                                <th>product foto</th>
-                                <th>product naam</th>
-                                <th>product prijs</th>
+                                <th>Locatie</th>
+                                <th>Hotel</th>
+                                <th>Regio</th>
+                                <th>Start Datum</th>
+                                <th>Eind Datum</th>
+                                <th>Kosten</th>
+                                <th>Begin Plek</th>
+                                <th>Eind Plek</th>
                                 <th>actie</th>
                             </tr>
                         </thead>
-                        <?php foreach($result as $product){ ?>
+                        <?php foreach($result as $value){ ?>
                         <tr>
-                            <td><img src="uploaded_img/<?php echo $product['image']; ?>" height="50" alt=""></td>
                             <td>
-                                <?php echo $product['name']; ?>
-                            </td>
-                            <td>$
-                                <?php echo $product['price']; ?>/-
+                                <?php echo $value['locatie']; ?>
                             </td>
                             <td>
-                                <a href="product_update.php?edit=<?php echo $product['id']; ?>" class="btn"> <i
+                                <?php echo $value['hotel']; ?>
+                            </td>
+                            <td>
+                                <?php echo $value['regio']; ?>
+                            </td>
+                            <td>
+                                <?php echo $value['startDatum']; ?>
+                            </td>
+                            <td>
+                                <?php echo $value['eindDatum']; ?>
+                            </td>
+                            <td>
+                                <?php echo $value['kosten']; ?>
+                            </td>
+                            <td>
+                                <?php echo $value['beginplek']; ?>
+                            </td>
+                            <td>
+                                <?php echo $value['eindplek']; ?>
+                            </td>
+                            <td>
+                                <a href="product_update.php?edit=<?php echo $value['reisID']; ?>" class="btn"> <i
                                         class="fas fa-edit"></i> bewerk </a>
-                                <a href="php/deletepage.php?delete=<?php echo $product['id']; ?>" class="btn"> <i
+                                <a href="deletepage.php?delete=<?php echo $value['reisID']; ?>" class="btn"> <i
                                         class="fas fa-trash"></i> verwijder </a>
                             </td>
                         </tr>
