@@ -55,13 +55,18 @@ if (isset($_SESSION['username']) == true) {
         </div>
         <div class="middlecontainer">
             <div class="middlebar1">
-                <form action="php/createProduct.php" method="post" enctype="multipart/form-data">
+                <form action="createProduct.php" method="post" enctype="multipart/form-data">
                     <div class="adminbox">
                     <h3 style="margin-top: 20px;">add a new product</h3>
-                    <input type="text" placeholder="enter product name" name="product_name" class="product-name" required>
-                    <input type="number" placeholder="enter product price" name="product_price" class="product-price" required>
-                    <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="product-image" required>
-                    <input type="submit" class="submitbtn" name="add_product" value="add product">
+                    <input type="text" min="0" class="box" name="hotel" placeholder="hotel naam">
+                    <input type="text" min="0" class="box" name="locatie" placeholder="locatie">
+                    <input type="text" min="0" class="box" name="startDatum" placeholder="startdatum ">
+                    <input type="text" min="0" class="box" name="eindDatum" placeholder="einddatum ">
+                    <input type="text" min="0" class="box" name="beginplek" placeholder="beginplek ">
+                    <input type="text" min="0" class="box" name="eindplek" placeholder="eindplek ">
+                    <input type="text" min="0" class="box" name="regio" placeholder="regio ">
+                    <input type="number" min="0" class="box" name="kosten" value="<?php echo $result['kosten']; ?>" placeholder="kosten ">
+                    <input type="submit" class="submitbtn" name="add_product" value="hotel toevoegen">
                     </div>
                 </form>
             </div>
