@@ -32,10 +32,15 @@
                         </div>
                         <a href="reisinformatie.php?id=<?php echo $value['reisID']; ?>">
                                         <span style="display: block;">
-                                            <button class="reverabutton">Informatie / Boeken</button>
+                                            <button class="reverabutton rightbtn">
+                                                <span class="material-symbols-outlined">
+                                                     flight
+                                                </span>
+                                            </button>
                                         </span>
                              </a>
                     </div>
+                    
                     </div>
                                
                  <?php

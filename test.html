@@ -1,0 +1,44 @@
+<?php
+                        $sql = "SELECT * FROM reizen WHERE reisID=:term";
+                        $stmt = $connect->prepare($sql);
+                        $stmt->bindParam(":term", $_GET['id']);
+                        $stmt->execute();
+                        $result = $stmt->fetchAll();
+                        foreach ($result as $value) {
+                            ?> <div class="reisinformatieimage"><img src=<?php  $value['img']?></div> <?php
+                        }
+
+
+
+<div class="top-box" style="margin-bottom: 60px;">
+    <div class="box-container" style="height: 400px; display: flex;">
+        <div class="box1" style="width: 50%;">
+            <div class="reisinformatieimage"><img src=""></div>
+        </div>
+        <div class="box2" style="width: 50%; margin-left: 20px;">
+            <div class="insidebox1">
+                    </a></span>
+                <h1 style="margin-bottom: 30px;">
+                <?php
+                        $sql = "SELECT * FROM reizen WHERE reisID=:term";
+                        $stmt = $connect->prepare($sql);
+                        $stmt->bindParam(":term", $_GET['id']);
+                        $stmt->execute();
+                        $result = $stmt->fetchAll();
+                        foreach ($result as $value) {
+                            echo $value['locatie'];
+                        }
+                ?>
+            </h1>
+                    </div>
+            <?php 
+            echo "Vliegen vanaf: " . $value['beginplek']; ?> <br> <?php 
+            echo "Vliegen naar: " . $value['eindplek']; ?> <br> <?php 
+            ?> <br> <?php
+            echo "Kosten: €" . $value['kosten']; ?> <br> <?php 
+            echo "Retour: " .  $value['retour']; ?> <br> <?php 
+            echo "Startdatum: " . $value['startDatum']; ?> <br> <?php 
+            echo "Einddatum: " . $value['eindDatum']; ?> <br> <?php 
+
+            ?>              
+            

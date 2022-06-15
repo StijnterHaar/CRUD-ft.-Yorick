@@ -70,9 +70,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 ?>
 
+
 <!DOCTYPE html>
-<html lang="en">
-    
+<html lang="nl">
+    <?php include ('includes/connect.php');?>
 
 <head>
     <meta charset="UTF-8">
@@ -83,7 +84,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <script src="https://kit.fontawesome.com/cfd87a559f.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="sccs/test.scss">
     <title>Revera.com</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
@@ -106,7 +106,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 include('includes/connect.php'); // Includes Login Script
                 if(isset($_SESSION['username']))
                 echo "<a href='accountsettings.php'>" . $_SESSION['username'] . "</a>";
-            else
+                   else
                 echo '<a class="catolag-list-items" onclick="openForm()">Login</a>';
                 ?> </div>
                 <div class="header-group-item login"><?php
@@ -162,102 +162,131 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
         </form>
     </div>
-    <div class="top-box">
-        <div class="box-container">
-            <div class="box-title">
-                <h1>Populaire vliegmaatschapijen</h1>
-            </div>
-            <ul class="locations-container2" id="scrollbarlijstauto">
-                <li class="autolijst">
-                    <div class="autoverhuurlogos">
-                        <img  src="https://i0.wp.com/insideflyer.nl/wp-content/uploads/2019/05/KLM-logo.png?ssl=1">
-                    </div>
-                </li>
-                <li class="autolijst">
-                    <div class="autoverhuurlogos">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Ryanair_logo_new.svg/1024px-Ryanair_logo_new.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
-                    </div>
-                </li>
-                <li class="autolijst">
-                    <div class="autoverhuurlogos">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EasyJet_logo.svg/1280px-EasyJet_logo.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
-                    </div>
-                </li>
-                <li class="autolijst">
-                    <div class="autoverhuurlogos">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/TUI_Logo_2016.svg/2560px-TUI_Logo_2016.svg.png">
-                    </div>
-                </li>
-                <li class="autolijst">
-                    <div class="autoverhuurlogos">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Lufthansa_Logo_2018.svg/1280px-Lufthansa_Logo_2018.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
-                    </div>
-                </li>
-                <li class="autolijst">
-                    <div class="autoverhuurlogos">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Transavia_logo.svg/2560px-Transavia_logo.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
-                    </div>
-                </li>
-                
+    <div class="top-box" style="margin-bottom: 60px; padding:100px;">
+        <?php
+        if(isset($_SESSION['username'])) {
+        
+        echo "<h1> Boekingen van " . $_SESSION['username'] .  ": </h1>";
 
-            </ul>
-        </div>
-    <div class="stays-all">
-        <div class="stays">
-            <div class="popular-stays">
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-            </div>
-            <div class="stays2">
-                <div class="left">
-                    <p>Zoeken op stad:</p>
-                    <form class="left-search" name="search" method="post">
-            <input class="reverainput" name="term">
-            <button class="reverabutton" name="search" id="startsearch">Zoeken</button>
-         </form>
-                    <ul class="flightlist">
-                    <p><b>Wij vliegen zowel naar:</b> </p>
-                    <?php
-                    
-                        $sql2 = "SELECT DISTINCT * FROM `regio`";
-                        $stmt2 = $connect->prepare($sql2);
-                        $stmt2->execute();
 
-                        $producten = $stmt2->fetchAll();
-                        foreach ($producten as $product) {
-                            ?> <li><?php echo $product['stad']; ?>, <?php echo $product['land']; ?> </a></li> <?php
-                        }
-                        ?> 
+         $sql = "SELECT gebruikerID FROM gebruikersboekingen WHERE gebruikerID=:term";
+         $stmt = $connect->prepare($sql);
+         $stmt->bindParam(":term", $_SESSION['id']);
+         $stmt->execute();
+         $result = $stmt->fetchAll();
+         foreach ($result as $value) {
+            echo $value['gebruikerID'] . $value['boekingID'];
+         }
+        $sql = "SELECT * FROM reizen WHERE reisID=:term";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(":term", $value['huidigeBoekingID']);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        foreach ($result as $value) {
+            ?>
+            <div class="mijnBoeking">
+                <h2> <?php echo $value['locatie']; ?> </h2>
+                <p> Begindatum: <?php echo $value['startDatum']; ?> </p>
+                <p> Einddatum: <?php echo $value['eindDatum']; ?> </p>
+                <p> Kosten: €<?php echo $value['kosten']; ?> </p>
+            </div>
+            <?php
+        }
+        }
+           ?>
+        
+        
+    </div>
+    <div class="footer">
+        <footer id="site-footer">
+            <section class="horizontal-footer-section" id="footer-middle-section">
+                <div id="footer-about" class="footer-columns footer-columns-large">
+                    <h1>Ons adress</h1>
+                    <address>
+                        <p><i class="fa-solid fa-location-dot"></i> 30/20, Verkhy street, Moscow, Russia</p>
+                        <p><i class="fa-solid fa-phone"></i> 7 (800) 555–35–35</p>
+                        <p><i class="fa-solid fa-envelope-circle-check"></i> noreply@reply.io</p>
+                        <p><i class="fa-solid fa-clock"></i> 8:00 AM – 8:00 PM</p>
+                    </address>
+                </div>
+                <div class="footer-columns">
+                    <h1>Overzicht</h1>
+                    <ul class="footer-column-menu" role="menu">
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="#" class="footer-column-menu-item-link">Services </a>
+                        </li>
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="#" class="footer-column-menu-item-link">Pricing</a>
+                        </li>
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="#" class="footer-column-menu-item-link">Portfolio</a>
+                        </li>
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="#" class="footer-column-menu-item-link">News</a>
+                        </li>
                     </ul>
                 </div>
-                <div class="right">
-                    <?php include('php/searchorgetall.php')?>;
-                <ul>
-                <li>
-                </li>    
-                </ul>
-                
+                <div class="footer-columns">
+                    <h1>Bronnen</h1>
+                    <ul class="footer-column-menu" role="menu">
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="#" class="footer-column-menu-item-link">FAQ</a>
+                        </li>
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="#" class="footer-column-menu-item-link">Media</a>
+                        </li>
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="#" class="footer-column-menu-item-link">Guides</a>
+                        </li>
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="#" class="footer-column-menu-item-link">Free Resources</a>
+                        </li>
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="#" class="footer-column-menu-item-link">Testimonials</a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+                <div class="footer-columns">
+                    <h1>Informatie</h1>
+                    <ul class="footer-column-menu" role="menu">
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="#" class="footer-column-menu-item-link">Over ons</a>
+                        </li>
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="#" class="footer-column-menu-item-link">Terms of Use</a>
+                        </li>
+                        <li class="footer-column-menu-item">
+                            <a href="#" class="footer-column-menu-item-link" role="menuitem">Legal Information</a>
+                        </li>
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="klantenservice.html" class="footer-column-menu-item-link">Stuur ons een
+                                berichtje</a>
+                        </li>
+                        <li class="footer-column-menu-item" role="menuitem">
+                            <a href="#" class="footer-column-menu-item-link">Laat feedback achter</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="horizontal-footer-section" id="footer-bottom-section">
+                <div id="footer-copyright-info">
+                    &copy; ROC Nijmegen Inc. 2022. All rights reserved.
+                </div>
+                <div id="footer-social-buttons">
+                    <img src="https://img.icons8.com/ios-filled/25/999999/facebook--v1.png" />
+                    <img src="https://img.icons8.com/ios-filled/25/999999/telegram-app.png" />
+                    <img src="https://img.icons8.com/ios-filled/25/999999/pinterest--v1.png" />
+                    <img src="https://img.icons8.com/ios-filled/25/999999/instagram--v1.png" />
+                </div>
+            </section>
+
+        </footer>
+
+    </div>
+
 </body>
 
 </html>
+
 <script src="javascript/code.js"></script>

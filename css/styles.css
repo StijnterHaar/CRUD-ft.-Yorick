@@ -620,7 +620,7 @@ footer#site-footer #footer-social-buttons img:hover {
 .contactform {
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
   padding: 10px;
-  width: 400px;
+  width: 840px;
   height: 630px;
   background-color: white;
   position: absolute;
@@ -805,15 +805,28 @@ a {
   margin-bottom: 50px;
 }
 
-.reisinformatieimage img {
+.reisinformatieimage {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: 100%;
+  width: 40%;
+  float:right;
   height: 350px;
   border-radius: 6px;
+  position:absolute;
 }
 
+.mijnBoeking {
+  margin-top:20px;
+  background-color:#fbfbfb;
+  padding:20px;
+  border:1px solid gray;
+}
+
+.bekijk {
+  color: #ef3f5a;
+  padding: 22px;
+}
 .rate {
   float: left;
   height: 46px;
@@ -886,6 +899,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top:-70px;
 }
 
 @keyframes load {
@@ -909,6 +923,10 @@ a {
   display: flex;
 }
 
+.rightbtn {
+  width:70px;
+  cursor:pointer;
+}
 .stays2 .left {
   width: 35%;
 }
@@ -935,8 +953,8 @@ a {
 }
 
 .stay-item img {
-  height: auto;
-  width: 250px;
+  height: 150px;
+  width: 200px;
 }
 .stay-item h1 {
   font-size: 23px;

@@ -1,3 +1,76 @@
+<?php
+// Initialize the session
+session_start();
+
+// Include config file
+require_once "includes/connect.php";
+ 
+// Define variables and initialize with empty values
+$username = $password = "";
+$username_err = $password_err = $login_err = "";
+ 
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+    
+    // Validate credentials
+    if(empty($username_err) && empty($password_err)){
+        // Prepare a select statement
+        $sql = "SELECT gebruikerID, username, password FROM gebruikers WHERE username = ?";
+        $link = mysqli_connect($host, $user, $pass, $db);
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_username);
+            
+            // Set parameters
+            $param_username = $username;
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                // Store result
+                mysqli_stmt_store_result($stmt);
+                
+                // Check if username exists, if yes then verify password
+                if(mysqli_stmt_num_rows($stmt) == 1){                    
+                    // Bind result variables
+                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                    if(mysqli_stmt_fetch($stmt)){
+                        if(password_verify($password, $hashed_password)){
+                            // Password is correct, so start a new session
+                            session_start();
+                            
+                            // Store data in session variables
+                            $_SESSION["loggedin"] = true;
+                            $_SESSION["id"] = $id;
+                            $_SESSION["username"] = $username;                            
+                            
+                            // Redirect user to welcome page
+                            header("location: index.php");
+                        } else{
+                            // Password is not valid, display a generic error message
+                            $login_err = "Invalid username or password.";
+                        }
+                    }
+                } else{
+                    // Username doesn't exist, display a generic error message
+                    $login_err = "Invalid username or password.";
+                }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
+        }
+    }
+    
+    // Close connection
+    $link = mysqli_connect($host, $user, $pass, $db);
+    mysqli_close($link);
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
     <?php include ('includes/connect.php');?>
@@ -20,31 +93,52 @@
     <header class="main-header">
         <nav class="header-top">
             <div class="header-left">
-                <img class="header-image" href="index.php" src="images/logo.png">
+                <a href="index.php">
+                    <img class="header-image" src="images/logo.png">
+                </a>
             </div>
             <div class="header-right">
-                <div class="header-group-item"><a href="verblijven.html">Bestemmingen</a></div>
-                <div class="header-group-item"><a href="klantenservice.html"><b>Klantenservice</b></a></div>
+                <div class="header-group-item"><a href="reizen.php">Bestemmingen</a></div>
+                <div class="header-group-item"><a href="klantenservice.php">Klantenservice</a></div>
                 <div class="header-group-item"><a href="index.php">Home</a></div>
 
-                <div class="header-group-item login marginleft"><a onclick="openForm()">Login</a></div>
-                <div class="header-group-item login"><a onclick="openForm()">Register</a></div>
+                <div class="header-group-item login marginleft"><?php
+                include('includes/connect.php'); // Includes Login Script
+                if(isset($_SESSION['username']))
+                echo "<a href='accountsettings.php'>" . $_SESSION['username'] . "</a>";
+            else
+                echo '<a class="catolag-list-items" onclick="openForm()">Login</a>';
+                ?> </div>
+                <div class="header-group-item login"><?php
+                include('includes/connect.php'); // Includes Login Script
+                if(isset($_SESSION['username']))
+                echo "<a style='display:none'>" . $_SESSION['username'] . "</a>";
+            else
+                echo '<a class="catolag-list-items" href="register.php">Register</a>';
+                ?></div>
 
             </div>
         </nav>
+
         <nav class="header-bottom">
+
             <ul class="header-bottom-box">
-                <li class="header-bottom-item "><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a></li>
-                <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a href="#">Vluchten</a></i>
-                <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="autoverhuur.html">Autoverhuur</a>
+                <li class="header-bottom-item"><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a>
+                </li>
+                <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a
+                        href="reizen.php">Vluchten</a></i>
+                <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="autoverhuur.php">Autoverhuur</a>
                 </li>
             </ul>
         </nav>
     </header>
-    
-
     <div class="form-popup" id="myForm">
-        <form action="validate.php" method="post">
+    <?php 
+        if(!empty($login_err)){
+            echo '<div class="alert alert-danger">' . $login_err . '</div>';
+        }        
+        ?>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="login-box">
                 <h1>Login</h1>
                 <div class="progress">
@@ -53,45 +147,51 @@
 
                 <div class="textbox">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    <input type="text" placeholder="Username" name="adminname" value="">
+                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
                 </div>
 
                 <div class="textbox">
                     <i class="fa fa-lock" aria-hidden="true"></i>
-                    <input type="password" placeholder="Password" name="password" value="">
+                    <input type="password" placeholder="Password" name="password" class="<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
                 </div>
-
+                <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
                 <input class="button" type="submit" name="login" value="Sign In">
                 <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </div>
         </form>
     </div>
     <div class="top-box" style="margin-bottom: 60px;">
-        <div class="box-container" style="height: 400px; display: flex;">
+        <div class="box-container reisinfo" style="height: 400px; display: flex;">
             <div class="box1" style="width: 50%;">
-                <div class="reisinformatieimage"><img src=""></div>
-            </div>
-            <div class="box2" style="width: 50%; margin-left: 20px;">
-                <div class="insidebox1">
-                    <span class="card__by">by <a href="#" class="card__author" title="author">D-reizen
-                        </a></span>
-                    <h1 style="margin-bottom: 30px;">
-                    <?php
+            <?php
                             $sql = "SELECT * FROM reizen WHERE reisID=:term";
                             $stmt = $connect->prepare($sql);
                             $stmt->bindParam(":term", $_GET['id']);
                             $stmt->execute();
                             $result = $stmt->fetchAll();
                             foreach ($result as $value) {
+                                ?>                         <img class="reisinformatieimage" src=<?php echo $value['foto']; ?>>
+            </div>
+            <div class="box2" style="width: 50%; margin-left: 20px;">
+                <div class="insidebox1">
+                        </a></span>
+                    <h1 style="margin-bottom: 30px;">
+                   
+                        <?php
                                 echo $value['locatie'];
                             }
                     ?>
                 </h1>
                         </div>
+
                 <?php 
+                
                 echo "Vliegen vanaf: " . $value['beginplek']; ?> <br> <?php 
                 echo "Vliegen naar: " . $value['eindplek']; ?> <br> <?php 
-
+                ?> <br> 
+                <?php
                 echo "Kosten: €" . $value['kosten']; ?> <br> <?php 
                 echo "Retour: " .  $value['retour']; ?> <br> <?php 
                 echo "Startdatum: " . $value['startDatum']; ?> <br> <?php 
@@ -114,14 +214,26 @@
                     </div>
                 </div>
                 <div class="insidebox2" style="display: flex; height: 40px; margin-bottom: 100px;">
-                    <div class="boeken" style="width: 200px;"><a style="color: white;">Boek nu</a></div>
+                <form class="searchdishpanel" name="search" method="post">
+                    <button name="search" class="reverabutton">Boeken</button>
+                </form>
+                    <?php if (isset($_POST["search"])) {
+                         $sql = "INSERT INTO `gebruikersboekingen` (`gebruikerID`, `boekingID`) VALUES (:gebruikerID, :boekingID);";
+                         $stmt = $connect->prepare($sql);
+                         $gebrID = $_SESSION['id'];
+                         $stmt->bindParam(":gebruikerID",  $gebrID);
+                         $stmt->bindParam(":boekingID",  $_GET['id']);
+                         $stmt->execute();
+                         $result = $stmt->fetchAll();
+                         echo "<br>Boeking toevoegd voor " . $_SESSION['username'] . " <Br><a class=bekijk href=boekingen.php>Bekijk mijn boekingen</a>";
+                        }
+                    ?>
                 </div>
             </div>
         </div>
   
         <div class="box-container" style="border-top-style: hidden;">
-            <a style="margin-top: 10px; font-size: 30px;">Selecteer data om prijzen en beschikbaarheid te zien (kan
-                inclusief Genius-prijzen zijn)</a>
+         
         </div>
     </div>
     </div>
