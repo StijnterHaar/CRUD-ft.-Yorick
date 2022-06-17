@@ -169,29 +169,45 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo "<h1> Boekingen van " . $_SESSION['username'] .  ": </h1>";
 
 
-         $sql = "SELECT gebruikerID FROM gebruikersboekingen WHERE gebruikerID=:term";
+         $sql = "SELECT * FROM gebruikersboekingen WHERE gebruikerID=:term";
          $stmt = $connect->prepare($sql);
          $stmt->bindParam(":term", $_SESSION['id']);
          $stmt->execute();
          $result = $stmt->fetchAll();
          foreach ($result as $value) {
-            echo $value['gebruikerID'] . $value['boekingID'];
+            $sql = "SELECT * FROM reizen WHERE reisID=:term";
+            $stmt = $connect->prepare($sql);
+            $stmt->bindParam(":term", $value['boekingID']);
+
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            foreach ($result as $value) {
+                ?>
+                <div class="mijnBoeking">
+                    <h2> <?php echo $value['locatie']; ?> </h2>
+                    <p> Begindatum: <?php echo $value['startDatum']; ?> </p>
+                    <p> Einddatum: <?php echo $value['eindDatum']; ?> </p>
+                    <p> Kosten: €<?php echo $value['kosten']; ?> </p>
+                    <p> ID: <?php echo $value['reisID'];?></p>
+                    <form class="searchdishpanel" name="verwijderen" method="post">
+                      <button name="verwijderen" class="reverabutton">Verwijderen</button>
+                    </form>
+                    <?php if (isset($_POST["verwijderen"])) {
+                         $sql = "DELETE FROM `gebruikersboekingen` WHERE `gebruikersboekingen`.`gebruikerID`=:gebruikerID AND `gebruikersboekingen`.`boekingID`=:reisID";
+                         $stmt = $connect->prepare($sql);
+                         $gebrID = $_SESSION['id']; 
+                         $stmt->bindParam(":reisID",  $value['reisID']);
+                         $stmt->bindParam(":gebruikerID",  $gebrID);
+                         $stmt->execute();
+                         $result = $stmt->fetchAll();
+                         echo "<br>Boeking met ID: " . $value['reisID'] . " verwijderd." ;
+                        }
+                    ?>
+                </div>
+                <?php
+            }
          }
-        $sql = "SELECT * FROM reizen WHERE reisID=:term";
-        $stmt = $connect->prepare($sql);
-        $stmt->bindParam(":term", $value['huidigeBoekingID']);
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-        foreach ($result as $value) {
-            ?>
-            <div class="mijnBoeking">
-                <h2> <?php echo $value['locatie']; ?> </h2>
-                <p> Begindatum: <?php echo $value['startDatum']; ?> </p>
-                <p> Einddatum: <?php echo $value['eindDatum']; ?> </p>
-                <p> Kosten: €<?php echo $value['kosten']; ?> </p>
-            </div>
-            <?php
-        }
+       
         }
            ?>
         
