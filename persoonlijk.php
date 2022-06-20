@@ -1,3 +1,10 @@
+<?php
+// Initialize the session 
+// Check if the user is logged in, otherwise redirect to login pag
+ 
+include('login.php');
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,15 +56,32 @@
         <div class="box-container" style="padding-top: 10px;">
             <div class="box-title" style="margin-left: 30px;">
                 <h1>Persoonlijke Informatie</h1>
-                <p>Beheer je Persoonlijke Info</p>
+                <p><?php
+                if (isset($_POST['username'])){
+                    $username = $_POST["username"];
+
+                    $id = $_SESSION["gebruikerID"];
+                    $stmt = $con->prepare("UPDATE gebruikers SET username = ? WHERE id = ?");
+                    $stmt->bind_param("si",$username,$id);
+                    $stmt->execute();
+                }
+                ?></p>
             </div>
             <div class="locations-container" style="display: flex; flex-wrap: wrap;">
                 <div class="settings-container">
                     <div class="settings-icons"><span class="fa-solid fa-list-check fa-xl settings-icon"></span></div>
                     <div class="settings-info" style="text-align: left;">
-                        <h2 style="padding-top: 25px; padding-left: 10px;">Gebruikersnaam Aanpassen</h2>
-                        <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke gebruikersnaam</p>
-                        <a href="#" style="color: #467fd3; padding-left: 10px;">Klik om gebruikersnaam aan te passen</a>
+                        <form action="php/username.php" method="POST"> 
+                                <div class="form-group">
+                                    <h2>New gebruikersnaam</h2>
+                                    <input type="text" name="new_username" class="form-control <?php echo (!empty($new_username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_username; ?>">
+                                    <span class="invalid-feedback"><?php echo $new_username_err; ?></span>
+                                    <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" value="Submit">
+                                    </div>
+                                </div>
+                               
+                            </form>
                     </div>
                 </div>
                 <div class="settings-container">
@@ -75,7 +99,7 @@
                         <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke notificaties</p>
                         <a href="#" style="color: #467fd3; padding-left: 10px;">Beheer notificaties</a>
                     </div>
-                </div>
+                </div>password
                 <div class="settings-container">
                     <div class="settings-icons"><span class="fa-solid fa-credit-card fa-xl settings-icon"></span></div>
                     <div class="settings-info" style="text-align: left;">
@@ -89,23 +113,19 @@
                     <div class="settings-icons"><span class="fa-solid fa-egg fa-xl settings-icon"></span></div>
                     <div class="settings-info" style="text-align: left;">
                         <div class="wrapper">
-                            <h2>Reset Password</h2>
-                            <p>Please fill out this form to reset your password.</p>
-                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
+                            <form action="php/password.php" method="post"> 
                                 <div class="form-group">
                                     <h2>New Password</h2>
                                     <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
                                     <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
-                                </div>
-                                <div class="form-group">
+                                    <div class="form-group">
                                     <label>Confirm Password</label>
                                     <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
                                     <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
-                                </div>
-                                <div class="form-group">
                                     <input type="submit" class="btn btn-primary" value="Submit">
-                                    <a class="btn btn-link ml-2" href="welcome.php">Cancel</a>
+                                    </div>
                                 </div>
+                               
                             </form>
                         </div> 
                         <a href="#" style="color: blue; padding-left: 10px;"></a>
