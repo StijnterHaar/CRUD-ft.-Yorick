@@ -205,9 +205,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         href = window.location.href;
                         if(href.includes("deleteID")) {
                             window.location.search = "delete_succes";
-                            alert("Item verwijderd");
                         }
-                        
                     </script>
                 </div>
                 <?php
