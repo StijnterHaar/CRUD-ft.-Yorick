@@ -1,7 +1,7 @@
 <?php
 
 // Include config file
-require_once "../includes/connect.php";
+require_once("includes/connect.php");
 
  
 // Define variables and initialize with empty values

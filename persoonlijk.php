@@ -3,6 +3,12 @@
 // Check if the user is logged in, otherwise redirect to login pag
  
 include('login.php');
+require_once "php/username.php";
+require_once "includes/connect.php";
+require_once "php/password.php";
+
+
+
 ?>
 
 
