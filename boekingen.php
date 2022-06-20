@@ -189,20 +189,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <p> Einddatum: <?php echo $value['eindDatum']; ?> </p>
                     <p> Kosten: €<?php echo $value['kosten']; ?> </p>
                     <p> ID: <?php echo $value['reisID'];?></p>
-                    <form class="searchdishpanel" name="verwijderen" method="post">
-                      <button name="verwijderen" class="reverabutton">Verwijderen</button>
-                    </form>
-                    <?php if (isset($_POST["verwijderen"])) {
+                      <a id="delete_btn" name="verwijderen" class="reverabutton" <?php echo "href=boekingen.php?deleteID=" . $value['reisID'];?>>Verwijderen</a>
+                    <?php if (isset($_GET["deleteID"])) {   
                          $sql = "DELETE FROM `gebruikersboekingen` WHERE `gebruikersboekingen`.`gebruikerID`=:gebruikerID AND `gebruikersboekingen`.`boekingID`=:reisID";
                          $stmt = $connect->prepare($sql);
                          $gebrID = $_SESSION['id']; 
-                         $stmt->bindParam(":reisID",  $value['reisID']);
+                         $stmt->bindParam(":reisID",  $_GET['deleteID']);
                          $stmt->bindParam(":gebruikerID",  $gebrID);
                          $stmt->execute();
-                         $result = $stmt->fetchAll();
-                         echo "<br>Boeking met ID: " . $value['reisID'] . " verwijderd." ;
                         }
+
                     ?>
+
+                    <script>
+                        href = window.location.href;
+                        if(href.includes("deleteID")) {
+                            window.location.search = "delete_succes";
+                            alert("Item verwijderd");
+                        }
+                        
+                    </script>
                 </div>
                 <?php
             }

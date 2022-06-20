@@ -952,6 +952,11 @@ a {
   transition: 200ms;
 }
 
+#delete_btn {
+  float:right;
+  margin-top:-55px;
+}
+
 .stay-item img {
   height: 150px;
   width: 200px;
