@@ -210,8 +210,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="settings-container">
                     <div class="settings-icons"><span class="fa-solid fa-egg fa-xl settings-icon"></span></div>
                     <div class="settings-info" style="text-align: left;">
-                        <h2 style="padding-top: 25px; padding-left: 10px;">Easteregg</h2>
-                        <p style="padding-left: 10px; margin-bottom: 20px;">:)</p>
+                        <h2><a href="boekingen.php" style="padding-top: 25px; padding-left: 10px;">Mijn Boekingen</a></h2>
                         <a href="#" style="color: blue; padding-left: 10px;"></a>
                     </div>
                 </div>
