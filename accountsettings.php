@@ -1,86 +1,6 @@
 <?php
 // Initialize the session
-session_start();
-
-// Include config file
-require_once "includes/connect.php";
- 
-// Define variables and initialize with empty values
-$username = $password = "";
-$username_err = $password_err = $login_err = "";
- 
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    // Check if username is empty
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
-    } else{
-        $username = trim($_POST["username"]);
-    }
-    
-    // Check if password is empty
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-    
-    // Validate credentials
-    if(empty($username_err) && empty($password_err)){
-        // Prepare a select statement
-        $sql = "SELECT gebruikerID, username, password FROM gebruikers WHERE username = ?";
-        $link = mysqli_connect($host, $user, $pass, $db);
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-            
-            // Set parameters
-            $param_username = $username;
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Store result
-                mysqli_stmt_store_result($stmt);
-                
-                // Check if username exists, if yes then verify password
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
-                    // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
-                            // Password is correct, so start a new session
-                            session_start();
-                            
-                            // Store data in session variables
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
-                            
-                            // Redirect user to welcome page
-                            header("location: index.php");
-                        } else{
-                            // Password is not valid, display a generic error message
-                            $login_err = "Invalid username or password.";
-                        }
-                    }
-                } else{
-                    // Username doesn't exist, display a generic error message
-                    $login_err = "Invalid username or password.";
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            mysqli_stmt_close($stmt);
-        }
-    }
-    
-    // Close connection
-    $link = mysqli_connect($host, $user, $pass, $db);
-    mysqli_close($link);
-}
+include('login.php');
 ?>
 
 <!DOCTYPE html>
@@ -208,10 +128,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
                 </div>
                 <div class="settings-container">
-                    <div class="settings-icons"><span class="fa-solid fa-egg fa-xl settings-icon"></span></div>
+                    <div class="settings-icons"><span class="fa-solid fa-book-atlas fa-xl settings-icon"></span></div>
                     <div class="settings-info" style="text-align: left;">
-                        <h2><a href="boekingen.php" style="padding-top: 25px; padding-left: 10px;">Mijn Boekingen</a></h2>
-                        <a href="#" style="color: blue; padding-left: 10px;"></a>
+                        <h2 style="padding-top: 25px; padding-left: 10px;">Boekingen</h2>
+                        <p style="padding-left: 10px; margin-bottom: 20px;">Hier kunt u al uw boekingen inzien</p>
+                        <a style="color: #467fd3; padding-left: 10px;" href="boekingen.php">Beheer boekingen</a>
                     </div>
                 </div>
                 <div class="settings-container">
@@ -219,7 +140,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <div class="settings-info" style="text-align: left;">
                         <h2 style="padding-top: 25px; padding-left: 10px;">Beveiliging</h2>
                         <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke beveiliging</p>
-                        <a href="#" style="color: blue; padding-left: 10px;">Beheer beveiliging</a>
+                        <a href="#" style="color: #467fd3; padding-left: 10px;">Beheer beveiliging</a>
                     </div>
                 </div>
 

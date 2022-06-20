@@ -1,13 +1,12 @@
 <?php
 // Initialize the session
+include ('includes/connect.php');
 include('login.php');
 ?>
 
 
 <!DOCTYPE html>
 <html lang="nl">
-    <?php include ('includes/connect.php');?>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
