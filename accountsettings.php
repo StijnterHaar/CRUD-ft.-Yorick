@@ -155,9 +155,9 @@ include('login.php');
                 <div id="footer-about" class="footer-columns footer-columns-large">
                     <h1>Ons adress</h1>
                     <address>
-                        <p><i class="fa-solid fa-location-dot"></i> 30/20, Verkhy street, Moscow, Russia</p>
-                        <p><i class="fa-solid fa-phone"></i> 7 (800) 555–35–35</p>
-                        <p><i class="fa-solid fa-envelope-circle-check"></i> noreply@reply.io</p>
+                        <p><i class="fa-solid fa-location-dot"></i> 30/20, Heyendaal, Nijmegen, The Netherlands</p>
+                        <p><i class="fa-solid fa-phone"></i> +31 6 13 26 34 33</p>
+                        <p><i class="fa-solid fa-envelope-circle-check"></i> Revera@gmail.com</p>
                         <p><i class="fa-solid fa-clock"></i> 8:00 AM – 8:00 PM</p>
                     </address>
                 </div>
@@ -202,16 +202,16 @@ include('login.php');
                     <h1>Informatie</h1>
                     <ul class="footer-column-menu" role="menu">
                         <li class="footer-column-menu-item" role="menuitem">
-                            <a href="#" class="footer-column-menu-item-link">Over ons</a>
+                            <a href="overons.php" class="footer-column-menu-item-link">Over ons</a>
                         </li>
                         <li class="footer-column-menu-item" role="menuitem">
-                            <a href="#" class="footer-column-menu-item-link">Terms of Use</a>
+                            <a href="termsofuse.php" class="footer-column-menu-item-link">Terms of Use</a>
                         </li>
                         <li class="footer-column-menu-item">
-                            <a href="#" class="footer-column-menu-item-link" role="menuitem">Legal Information</a>
+                            <a href="legalinformation.php" class="footer-column-menu-item-link" role="menuitem">Legal Information</a>
                         </li>
                         <li class="footer-column-menu-item" role="menuitem">
-                            <a href="klantenservice.html" class="footer-column-menu-item-link">Stuur ons een
+                            <a href="klantenservice.php" class="footer-column-menu-item-link">Stuur ons een
                                 berichtje</a>
                         </li>
                         <li class="footer-column-menu-item" role="menuitem">

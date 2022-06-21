@@ -1,14 +1,22 @@
 
 <?php
 
+
 include 'includes/connect.php';
 session_start();
+
+if(isset($_SESSION['function'])== 1){
+    echo "Karibu Mr. Admin!";
+}
+else{
+    echo "Acess denied: Hauruhusiwi Kuingia eneo hili!";
+}
+
 if (isset($_SESSION['username']) == true) {
 } else {
     header("Location:index.php");
-}
- 
-// Check if the user is logged in, if not then redirect him to login pag
+} 
+
 ?>
 
 

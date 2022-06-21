@@ -96,7 +96,7 @@ include ('includes/connect.php');
         </form>
     </div>
     <div class="top-box" style="margin-bottom: 60px;">
-        <div class="box-container reisinfo" style="height: 400px; display: flex;">
+        <div class="box-container reisinfo" style="height: auto; display: flex;">
             <div class="box1" style="width: 50%;">
             <?php
                             $sql = "SELECT * FROM reizen WHERE reisID=:term";
@@ -133,20 +133,9 @@ include ('includes/connect.php');
                 ?>              
                 
                 <div class="insidebox2" style="display: flex; height: 40px; margin-bottom: 100px;">
-                    <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                    </div>
+                   
                 </div>
-                <div class="insidebox2" style="display: flex; height: 40px; margin-bottom: 100px;">
+                <div class="insidebox2" style="display: flex; height: 70px; ">
                 <form class="searchdishpanel" name="search" method="post">
                     <button name="search" class="reverabutton">Boeken</button>
                 </form>
@@ -166,7 +155,12 @@ include ('includes/connect.php');
         </div>
   
         <div class="box-container" style="border-top-style: hidden;">
-         
+        <div class="review">
+            <div class="review-inner">
+                <div class="reviewname"><a>Harrie</a></div>
+                <a>Great hotel!</a>
+            </div>
+        </div>
         </div>
     </div>
     </div>
@@ -176,9 +170,9 @@ include ('includes/connect.php');
                 <div id="footer-about" class="footer-columns footer-columns-large">
                     <h1>Ons adress</h1>
                     <address>
-                        <p><i class="fa-solid fa-location-dot"></i> 30/20, Verkhy street, Moscow, Russia</p>
-                        <p><i class="fa-solid fa-phone"></i> 7 (800) 555–35–35</p>
-                        <p><i class="fa-solid fa-envelope-circle-check"></i> noreply@reply.io</p>
+                        <p><i class="fa-solid fa-location-dot"></i> 30/20, Heyendaal, Nijmegen, The Netherlands</p>
+                        <p><i class="fa-solid fa-phone"></i> +31 6 13 26 34 33</p>
+                        <p><i class="fa-solid fa-envelope-circle-check"></i> Revera@gmail.com</p>
                         <p><i class="fa-solid fa-clock"></i> 8:00 AM – 8:00 PM</p>
                     </address>
                 </div>
@@ -223,16 +217,16 @@ include ('includes/connect.php');
                     <h1>Informatie</h1>
                     <ul class="footer-column-menu" role="menu">
                         <li class="footer-column-menu-item" role="menuitem">
-                            <a href="#" class="footer-column-menu-item-link">Over ons</a>
+                            <a href="overons.php" class="footer-column-menu-item-link">Over ons</a>
                         </li>
                         <li class="footer-column-menu-item" role="menuitem">
-                            <a href="#" class="footer-column-menu-item-link">Terms of Use</a>
+                            <a href="termsofuse.php" class="footer-column-menu-item-link">Terms of Use</a>
                         </li>
                         <li class="footer-column-menu-item">
-                            <a href="#" class="footer-column-menu-item-link" role="menuitem">Legal Information</a>
+                            <a href="legalinformation.php" class="footer-column-menu-item-link" role="menuitem">Legal Information</a>
                         </li>
                         <li class="footer-column-menu-item" role="menuitem">
-                            <a href="klantenservice.html" class="footer-column-menu-item-link">Stuur ons een
+                            <a href="klantenservice.php" class="footer-column-menu-item-link">Stuur ons een
                                 berichtje</a>
                         </li>
                         <li class="footer-column-menu-item" role="menuitem">
