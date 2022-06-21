@@ -25,7 +25,7 @@ header {
 
 .header-bottom {
   background-color: #ef3f5a;
-  width: 100%;
+  width: auto;
   height: 50px;
   box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
 }
@@ -34,6 +34,117 @@ header {
   display: flex;
   width: 600px;
   margin-left: 10%;
+}
+
+.Menuitems {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header-top {
+    display: none;
+  }
+  .Menuitems {
+    display: block;
+    color: white;
+  }
+
+  .box-title {
+    margin-right: 0px;
+    margin-left: 30px !important;
+    width: 300px;
+  }
+
+  .box-title p {
+    display: none;
+  }
+
+  .flex-form {
+    width: auto !important ;
+  }
+
+  .cover {
+    height: 35vh !important;
+  }
+
+  .fa-bed {
+    margin-left: 20px;
+  }
+
+  .fa-plane-departure {
+    margin-left: 30px;
+  }
+
+  .fa-car {
+    margin-left: 40px;
+  }
+
+  .box-container {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .locations-container {
+    display: block !important;
+  }
+
+  .card {
+    width: 100% !important;
+  }
+
+  .box-container2 {
+    display: none;
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .stays-all {
+    padding: 0 !important;
+  }
+
+  .stays2 {
+    display: block !important;
+  }
+
+  .stays2 .left {
+    display: none !important;
+  }
+
+  .stay-item {
+    height: 100px !important;
+  }
+
+  .stay-info {
+    width: 100% !important;
+  }
+
+  .stay-info a {
+    display: none !important;
+  }
+
+  .stay-item img {
+    height: 100px !important;
+    width: 200px !important;
+  }
+
+  .popular-stays {
+    display: none !important;
+  }
+
+  .contactform {
+    width: auto !important;
+  }
+
+  .reverainput,
+  .reveratextarea {
+    width: 100% !important;
+  }
+
+  .top-box {
+    padding: 0 !important;
+  }
 }
 
 .header-right {
@@ -96,6 +207,15 @@ header {
   padding: 14px;
   margin-left: 20px;
   display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .header-bottom-item {
+    margin-top: 0px;
+    padding: 4px;
+    margin-left: 20px;
+    display: block;
+  }
 }
 
 .header-bottom-item:hover {
@@ -248,24 +368,6 @@ header {
 
 input[type="search"] {
   flex-basis: 500px;
-}
-
-@media all and (max-width: 360px) {
-  .flex-form {
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
-  }
-
-  input[type="search"] {
-    flex-basis: 0;
-  }
-
-  label {
-    display: none;
-  }
 }
 
 /* icons */
@@ -621,15 +723,13 @@ footer#site-footer #footer-social-buttons img:hover {
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2);
   padding: 10px;
   width: 840px;
-  height: 630px;
+  height: auto;
   background-color: white;
-  position: absolute;
-  top: 0;
+  top: 4;
   bottom: 0;
   left: 0;
   right: 0;
   margin: auto;
-  margin-top: 200px;
 }
 
 .contactform h2 {
@@ -810,57 +910,22 @@ a {
   background-position: center;
   background-repeat: no-repeat;
   width: 40%;
-  float:right;
+  float: right;
   height: 350px;
   border-radius: 6px;
-  position:absolute;
+  position: absolute;
 }
 
 .mijnBoeking {
-  margin-top:20px;
-  background-color:#fbfbfb;
-  padding:20px;
-  border:1px solid gray;
+  margin-top: 20px;
+  background-color: #fbfbfb;
+  padding: 20px;
+  border: 1px solid gray;
 }
 
 .bekijk {
   color: #ef3f5a;
   padding: 22px;
-}
-.rate {
-  float: left;
-  height: 46px;
-  padding: 0 10px;
-}
-.rate:not(:checked) > input {
-  position: absolute;
-  top: -9999px;
-}
-.rate:not(:checked) > label {
-  float: right;
-  width: 1em;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: pointer;
-  font-size: 30px;
-  color: #ccc;
-}
-.rate:not(:checked) > label:before {
-  content: "★ ";
-}
-.rate > input:checked ~ label {
-  color: #ffc700;
-}
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-  color: #deb217;
-}
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-  color: #c59b08;
 }
 
 .personen {
@@ -899,7 +964,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top:-70px;
+  margin-top: -70px;
 }
 
 @keyframes load {
@@ -924,8 +989,8 @@ a {
 }
 
 .rightbtn {
-  width:70px;
-  cursor:pointer;
+  width: 70px;
+  cursor: pointer;
 }
 .stays2 .left {
   width: 35%;
@@ -943,6 +1008,7 @@ a {
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
   margin-top: 30px;
   height: 150px;
+  width: auto;
 }
 
 .stay-item:hover {
@@ -953,8 +1019,8 @@ a {
 }
 
 #delete_btn {
-  float:right;
-  margin-top:-55px;
+  float: right;
+  margin-top: -55px;
 }
 
 .stay-item img {
@@ -1029,14 +1095,26 @@ a {
 .stay-info {
   justify-content: space-evenly;
   display: flex;
+  background-color: #ef3f5a;
 }
 
 .stay-info-left {
   border-right: 1px solid white;
-  padding-right: 20px;
-  padding-left: 20px;
-  padding-top: 20px;
+  padding-left: 5px;
+  padding-top: 15px;
+  width: 290px;
 }
+
+@media screen and (max-width: 768px) {
+  .stay-info-left {
+    border-right: 1px solid white;
+    padding-left: 5px;
+    padding-top: 15px;
+    width: 100px;
+    font-size: 10px;
+  }
+}
+
 .stay-info-right {
   margin-top: 31px;
   margin-left: 20px;
@@ -1145,4 +1223,18 @@ a {
 
 .product-display .product-display-table a {
   width: 100px;
+}
+
+.review {
+  width: 100%;
+  height: auto;
+}
+
+.review-inner {
+  border-bottom: solid 0.2em rgb(162, 162, 162);
+  height: 100px;
+}
+
+.reviewname a {
+  font-weight: bold;
 }

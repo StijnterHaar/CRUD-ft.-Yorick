@@ -57,9 +57,12 @@ include('login.php');
         <nav class="header-bottom">
 
             <ul class="header-bottom-box">
-                <li class="header-bottom-item"><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a>
+                <li class="Menuitems" >
+                <i class="fa-solid fa-bars"></i>
                 </li>
-                <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a
+                <li class="header-bottom-item "><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a>
+                </li>
+                <li class="header-bottom-item selected"><i class="fa-solid fa-plane-departure"></i><a
                         href="reizen.php">Vluchten</a></i>
                 <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="autoverhuur.php">Autoverhuur</a>
                 </li>
@@ -183,7 +186,7 @@ include('login.php');
                     </ul>
                 </div>
                 <div class="right">
-                    <?php include('php/searchorgetall.php')?>;
+                    <?php include('php/searchorgetall.php')?>
                 <ul>
                 <li>
                 </li>    

@@ -10,7 +10,7 @@ $username = $password = "";
 $username_err = $password_err = $login_err = "";
  
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])){
  
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
