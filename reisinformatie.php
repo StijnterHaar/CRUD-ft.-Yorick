@@ -1,7 +1,8 @@
 <?php
-// Initialize the session
-include ('includes/connect.php');
+
 include('login.php');
+include ('includes/connect.php');
+
 ?>
 
 
