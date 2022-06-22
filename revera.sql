@@ -92,7 +92,7 @@ CREATE TABLE `recensies` (
 
 CREATE TABLE `reizen` (
   `reisID` int(11) NOT NULL,
-  `foto` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `startDatum` date NOT NULL,
   `eindDatum` date NOT NULL,
   `kosten` double NOT NULL,

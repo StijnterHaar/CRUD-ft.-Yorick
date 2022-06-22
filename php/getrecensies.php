@@ -11,7 +11,7 @@
             if ($huidigeReis == $recensieReis) {
                 ?>
                 <div class="recensie">
-                <h2> <?php echo $value['gebruikerNaam'];?> </h2>
+                <h2> <?php echo $value['username'];?> </h2>
                 <h3> <?php echo $value['titel'];?> - <?php echo $value['rating'];?> sterren</h3>
                 <p> <?php echo $value['comment'];?> </h2>
                 </div>

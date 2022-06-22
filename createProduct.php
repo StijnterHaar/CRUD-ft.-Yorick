@@ -3,6 +3,7 @@
 
     if(isset($_POST['add_product'])){
         $hotel = $_POST['hotel'];
+        $foto = $_POST['foto'];
         $kosten = $_POST['kosten'];
         $locatie = $_POST['locatie'];
         $startDatum = $_POST['startDatum'];
@@ -15,10 +16,11 @@
             header('Location: adminpage.php');
             exit();
         }else{
-            $sql = "INSERT INTO reizen(hotel, kosten, locatie, startDatum, eindDatum, beginplek, eindplek, regio) VALUES (:hotel, :kosten, :locatie, :startDatum, :eindDatum, :beginplek, :eindplek, :regio)";
+            $sql = "INSERT INTO reizen(hotel, kosten, locatie, startDatum, eindDatum, beginplek, eindplek, regio, foto) VALUES (:hotel, :kosten, :locatie, :startDatum, :eindDatum, :beginplek, :eindplek, :regio, :foto)";
             $stmt = $connect->prepare($sql);
             $stmt->bindParam(':hotel', $hotel);
             $stmt->bindParam(':kosten', $kosten);
+            $stmt->bindParam(':foto', $foto);
             $stmt->bindParam(':locatie', $locatie);
             $stmt->bindParam(':startDatum', $startDatum);
             $stmt->bindParam(':eindDatum', $eindDatum);
@@ -26,7 +28,6 @@
             $stmt->bindParam(':eindplek', $eindplek);
             $stmt->bindParam(':regio', $regio);
             $stmt->execute();
-
     
             header('Location: adminpage.php');
             exit();
