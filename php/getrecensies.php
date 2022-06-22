@@ -30,6 +30,6 @@
                 $stmt->bindParam(":titel", $_POST['recensietitel']);
 
                 $stmt->execute();
-
+            
             }
             ?> 
