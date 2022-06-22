@@ -5,11 +5,12 @@
 include 'includes/connect.php';
 session_start();
 
-if(isset($_SESSION['function'])== 1){
-    echo "Karibu Mr. Admin!";
+
+if(isset($_SESSION['function']) == 1){
+    echo "Admin!";
 }
 else{
-    echo "Acess denied: Hauruhusiwi Kuingia eneo hili!";
+    echo "Acess denied: ";
 }
 
 if (isset($_SESSION['username']) == true) {
@@ -66,11 +67,12 @@ if (isset($_SESSION['username']) == true) {
                 <form action="createProduct.php" method="post" enctype="multipart/form-data">
                     <div class="adminbox">
                     <h3 style="margin-top: 20px;">add a new product</h3>
+                    <input type="text" min="0" class="box" name="foto" placeholder="Foto URL">
                     <input type="text" min="0" class="box" name="hotel" placeholder="hotel naam">
-                    <input type="text" min="0" class="box" name="locatie" placeholder="locatie">
-                    <input type="text" min="0" class="box" name="startDatum" placeholder="startdatum ">
-                    <input type="text" min="0" class="box" name="eindDatum" placeholder="einddatum ">
-                    <input type="text" min="0" class="box" name="beginplek" placeholder="beginplek ">
+                    <input type="text" min="0" class="box" name="locatie" placeholder="locatie(naam)">
+                    <input type="date" min="0" class="box" name="startDatum" placeholder="startdatum ">
+                    <input type="date" min="0" class="box" name="eindDatum" placeholder="einddatum ">
+                    <input type="text" min="0" class="box" name="beginplek" placeholder="Vliegen vanuit: ">
                     <input type="text" min="0" class="box" name="eindplek" placeholder="eindplek ">
                     <input type="text" min="0" class="box" name="regio" placeholder="regio ">
                     <input type="number" min="0" class="box" name="kosten" value="<?php echo $result['kosten']; ?>" placeholder="kosten ">

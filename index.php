@@ -139,7 +139,7 @@ include('login.php');
                             </a></span>
                             <a href="reisinformatie.php?id=<?php echo $value['reisID']; ?>">
                                         <span style="display: block;">
-                                            <button style=" width:130px; float:right; margin-top:-30px; margin-bottom:30px;" class="reverabutton rightbtn">
+                                            <button style=" width:105px; float:right; margin-top:-30px; margin-bottom:30px; display: flex; justify-content: center;" class="reverabutton rightbtn">
                                                 Informatie
                                             </button>
                                         </span>
