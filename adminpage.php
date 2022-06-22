@@ -55,7 +55,9 @@ if (isset($_SESSION['username']) == true) {
         </div>
         <div class="topbar">
             <div class="box2">
-                <div class="boxh" style="background-color: red;"></div>
+                <div class="boxh" style="background-color: red;">
+                
+                </div>
                 <div class="boxd">View Details</div>
             </div>
             <div class="box2"></div>
@@ -68,13 +70,13 @@ if (isset($_SESSION['username']) == true) {
                     <div class="adminbox">
                     <h3 style="margin-top: 20px;">add a new product</h3>
                     <input type="text" min="0" class="box" name="foto" placeholder="Foto URL">
-                    <input type="text" min="0" class="box" name="hotel" placeholder="hotel naam">
+                    <input type="text" min="0" class="box" name="hotel" placeholder="hotel">
                     <input type="text" min="0" class="box" name="locatie" placeholder="locatie(naam)">
                     <input type="date" min="0" class="box" name="startDatum" placeholder="startdatum ">
                     <input type="date" min="0" class="box" name="eindDatum" placeholder="einddatum ">
                     <input type="text" min="0" class="box" name="beginplek" placeholder="Vliegen vanuit: ">
                     <input type="text" min="0" class="box" name="eindplek" placeholder="eindplek ">
-                    <input type="text" min="0" class="box" name="regio" placeholder="regio ">
+                    <input type="text" min="0" class="box" name="regio" placeholder="Land ">
                     <input type="number" min="0" class="box" name="kosten" value="<?php echo $result['kosten']; ?>" placeholder="kosten ">
                     <input type="submit" class="submitbtn" name="add_product" value="hotel toevoegen">
                     </div>
