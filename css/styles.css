@@ -929,24 +929,43 @@ a {
   margin-top:30px;
   margin-bottom:40px;
 }
-.plaatsRecensie input {
+.plaatsRecensie textarea {
   margin-bottom:-25px;
   height:45px;
-  width:85%;
+  width:100%;
   padding:5px;
-  font-size:20px;
+  font-size:18px;
+  height:140px;
 }
 .plaatsRecensie select {
   height:45px;
-  margin-left:10px;
-  margin-right:5px;
-  margin-top:-20px;
+  margin-top:40px;
+  border:0px solid;
+  margin-left:20px;
+  margin-right:20px;
 }
 .plaatsRecensie .reverabutton {
-  margin-top:2px;
-  position:absolute;
+  margin-top:40px;
 }
 
+.boekknop {
+  margin-left:0px;
+  margin-top:20px;
+}
+.recensietitel {
+  height:40px;
+  font-size:18px;
+  padding:5px;
+  margin-bottom:20px;
+}
+
+.recensies h1 {
+  margin-top:200px;
+}
+
+.bottomright {
+  float:right;
+}
 
 .recensie {
   margin-top:20px;

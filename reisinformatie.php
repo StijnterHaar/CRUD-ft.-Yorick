@@ -119,8 +119,16 @@
                   ?>              
 
                     <form class="searchdishpanel" name="search" method="post">
-                    <button name="search" class="reverabutton">Boeken</button>
+                     <?php if(isset($_SESSION['username'])) { ?>
+                        <button name="search" class="reverabutton boekknop">Boeken</button>
+                    <?php 
+                  } else if (!isset($_SESSION['username'])) {
+                     echo '<br> <b>Je moet ingelogd zijn om te boeken.</b>';
+                  
+                  }
+                    ?>
                 </form>
+                
                 <?php if (isset($_POST["search"])) {
                     $sql = "INSERT INTO `gebruikersboekingen` (`gebruikerID`, `boekingID`) VALUES (:gebruikerID, :boekingID);";
                     $stmt = $connect->prepare($sql);
@@ -130,7 +138,8 @@
                     $stmt->execute();
                     $result = $stmt->fetchAll();
                     echo "<br>Boeking toevoegd voor " . $_SESSION['username'] . " <Br><a class=bekijk href=boekingen.php>Bekijk mijn boekingen</a>";
-                    }
+            
+         }
                     ?>
                         
 
@@ -138,20 +147,36 @@
                 
          </div>
          <div class="recensies">
-                            <h1>Plaats een recensie</h1>
+            <?php 
+            if(isset($_SESSION['username'])) {
+            ?>
+                           <h1>Plaats een recensie</h1>
                             <p>Je kan ook een aantal sterren geven.</p>
                             <form class="plaatsRecensie" name="plaatsRecensie" method="post">
-                                <input name="recensietext" placeholder="Typ hier je recensie">
-                                <select name="rating">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
+                            <input class="recensietitel" name="recensietitel" placeholder="Titel"></textarea>
 
-                                </select>
-                                <button name="plaatsRecensie" class="reverabutton">Plaats</button>
+                               </span> <textarea class="recensieinput" name="recensietext" placeholder="Typ hier je recensie"></textarea>
+                              <div class="bottomright">
+                                 <span>Hoeveel sterren zou je de reis geven? </span>
+                                 <select name="rating">
+                                       <option value="1">1</option>
+                                       <option value="2">2</option>
+                                       <option value="3">3</option>
+                                       <option value="4">4</option>
+                                       <option value="5">5</option>
+                                 </select>
+                                 <button name="plaatsRecensie" class="reverabutton">Plaats</button>
+                                 </div>
                             </form>
+                            <?php 
+            } else if (!isset($_SESSION['username'])) {
+               echo '<b>Je moet inlogd zijn om een recensie te plaatsen.</b>';
+            }
+                            
+                            ?>
+                            
+                            
+                            
                             <h1>Wat vinden andere klanten?</h1>
                             <p>Vind hier recensies van anderen.</p>
                             <?php include('php/getrecensies.php')?>

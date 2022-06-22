@@ -20,17 +20,16 @@
             }   
 
             if (isset($_POST["plaatsRecensie"])) {
-
-                $sql = "INSERT INTO `recensies` (`recensieID`, `gebruikerID`, `gebruikerNaam`, `reisID`, `rating`, `comment`, `titel`, `datum`) VALUES (:recensieID, :gebruikerID, :gebruikerNaam, :reisID, :rating, :comment, :titel, :datum);";
+                $sql = "INSERT INTO `recensies` (`recensieID`, `titel`, `gebruikerID`, `gebruikerNaam`, `reisID`, `rating`, `comment`) VALUES (NULL, :titel, :gebruikerID, :gebruikerNaam, :reisID, :rating, :comment);";
                 $stmt = $connect->prepare($sql);
-                $stmt->bindParam(":gebruikerID", $_SESSION_['id']);
+                $stmt->bindParam(":gebruikerID", $_SESSION['id']);
                 $stmt->bindParam(":gebruikerNaam", $_SESSION['username']);
                 $stmt->bindParam(":reisID", $_GET['id']);
                 $stmt->bindParam(":rating", $_POST['rating']);
                 $stmt->bindParam(":comment", $_POST['recensietext']);
-                $stmt->bindParam(":titel", $_POST['recensietext']);
-                $stmt->bindParam(":datum", $_POST['recensietext']);  
+                $stmt->bindParam(":titel", $_POST['recensietitel']);
+
                 $stmt->execute();
-                $result = $stmt->fetchAll();
+
             }
             ?> 
