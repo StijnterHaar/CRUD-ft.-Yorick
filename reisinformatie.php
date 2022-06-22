@@ -95,7 +95,7 @@
                   $stmt->execute();
                   $result = $stmt->fetchAll();
                   foreach ($result as $value) {
-                      ?>                         <img class="reisinformatieimage" src=<?php echo $value['foto']; ?>>
+                      ?>                         <img class="reisinformatieimage" src="<?php echo $value['foto']; ?>">
             </div>
             <div class="box2" style="width: 50%; margin-left: 20px;">
                <div class="insidebox1">

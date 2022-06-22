@@ -807,6 +807,7 @@ a {
   width: 100%;
   display: flex;
   overflow-x: scroll;
+  justify-content: space-evenly;
 }
 
 .autoverhuurlogos {
@@ -1158,9 +1159,9 @@ a {
 
 .stay-info-left {
   border-right: 1px solid white;
-  padding-left: 5px;
+  padding-left: 15px;
   padding-top: 15px;
-  width: 290px;
+  width: 400px;
 }
 
 @media screen and (max-width: 768px) {

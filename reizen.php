@@ -102,7 +102,7 @@ include('login.php');
     <div class="top-box">
         <div class="box-container">
             <div class="box-title">
-                <h1>Populaire vliegmaatschapijen</h1>
+                <h1><center>Populaire vliegmaatschapijen</center></h1>
             </div>
             <ul class="locations-container2" id="scrollbarlijstauto">
                 <li class="autolijst">
@@ -142,26 +142,20 @@ include('login.php');
     <div class="stays-all">
         <div class="stays">
             <div class="popular-stays">
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
+                <?php
+                 $sql = "SELECT * FROM `reizen`";
+                 $stmt = $connect->prepare($sql);
+                 $stmt->execute();
+                 $result = $stmt->fetchAll();
+                 foreach ($result as $value) {
+                    ?>
+                    <div class="sugg">
+                    <img src=<?php echo $value['foto'];?> alt="LA" style="width:100%; height:180px;">
+                    <p><?php echo $value['locatie'];?></p>
                 </div>
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
-                <div class="sugg">
-                    <img src="https://i.ibb.co/pK6TVYR/losangeles.png" alt="LA" style="width:100%">
-                    <p>Los Angeles, USA</p>
-                </div>
+                <?php
+                 }
+                 ?>
             </div>
             <div class="stays2">
                 <div class="left">
