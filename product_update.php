@@ -64,13 +64,16 @@ if(isset($_POST['update_product'])){
       $stmt = $connect->prepare($select);
       $stmt->bindParam('reisID', $_POST['reisID']);
       $stmt->execute();
-      $result = $stmt->fetch();
+      $result = $stmt->fetchAll();
+    foreach($result as $value) {  
+
+
    ?>
       </div><br/>
       <form method="post" action="">
           <div class="form-group">
               <label>Foto URL</label>
-              <input type="text"  class="form-control" name="foto"/>
+              <input type="text"  class="form-control" name="foto" value=<?php echo value['foto'];?>>
           </div>
           <div class="form-group">
               <label>hotel</label>
@@ -106,6 +109,9 @@ if(isset($_POST['update_product'])){
           </div>
           <button type="submit" value="update product" name="update_product" class="btn btn-block btn-danger">Update</button>
       </form>
+      <?php
+    } 
+    ?>
   </div>
 </div>
 
