@@ -930,41 +930,41 @@ a {
   margin-bottom: 40px;
 }
 .plaatsRecensie textarea {
-  margin-bottom:-25px;
-  height:45px;
-  width:100%;
-  padding:5px;
-  font-size:18px;
-  height:140px;
+  margin-bottom: -25px;
+  height: 45px;
+  width: 100%;
+  padding: 5px;
+  font-size: 18px;
+  height: 140px;
 }
 .plaatsRecensie select {
-  height:45px;
-  margin-top:40px;
-  border:0px solid;
-  margin-left:20px;
-  margin-right:20px;
+  height: 45px;
+  margin-top: 40px;
+  border: 0px solid;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .plaatsRecensie .reverabutton {
-  margin-top:40px;
+  margin-top: 40px;
 }
 
 .boekknop {
-  margin-left:0px;
-  margin-top:20px;
+  margin-left: 0px;
+  margin-top: 20px;
 }
 .recensietitel {
-  height:40px;
-  font-size:18px;
-  padding:5px;
-  margin-bottom:20px;
+  height: 40px;
+  font-size: 18px;
+  padding: 5px;
+  margin-bottom: 20px;
 }
 
 .recensies h1 {
-  margin-top:200px;
+  margin-top: 200px;
 }
 
 .bottomright {
-  float:right;
+  float: right;
 }
 
 .recensie {
@@ -1252,7 +1252,6 @@ a {
 
 .middlebar1 {
   display: flex;
-  width: 50%;
   height: 400px;
   margin-top: 50px;
   background-color: #f8f8f8;
@@ -1262,7 +1261,7 @@ a {
 .middlebar2 {
   margin-left: 30px;
   display: block;
-  width: 40%;
+  width: 65%;
   height: 400px;
   margin-top: 50px;
   background-color: #f8f8f8;
@@ -1272,6 +1271,13 @@ a {
 .product-display .product-display-table {
   width: 100%;
   text-align: center;
+  border-collapse: collapse;
+}
+
+.product-display-table tr {
+  width: auto;
+  border-bottom: solid 0.2em rgb(0, 0, 0);
+  padding-bottom: 4px;
 }
 
 .product-display {
@@ -1295,4 +1301,12 @@ a {
 
 .reviewname a {
   font-weight: bold;
+}
+
+.form-group {
+  padding: 4px;
+}
+
+.form-group input {
+  width: auto;
 }

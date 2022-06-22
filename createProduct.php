@@ -3,7 +3,6 @@
 
     if(isset($_POST['add_product'])){
         $hotel = $_POST['hotel'];
-        $foto = $_POST['foto'];
         $kosten = $_POST['kosten'];
         $locatie = $_POST['locatie'];
         $startDatum = $_POST['startDatum'];
@@ -11,6 +10,7 @@
         $regio = $_POST['regio'];
         $beginplek = $_POST['beginplek'];
         $eindplek = $_POST['eindplek'];
+        $foto = $_POST['foto'];
 
         if(empty($kosten) || empty($locatie) || empty($regio)){
             header('Location: adminpage.php');

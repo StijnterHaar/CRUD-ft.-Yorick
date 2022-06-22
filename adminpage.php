@@ -66,23 +66,47 @@ if (isset($_SESSION['username']) == true) {
         </div>
         <div class="middlecontainer">
             <div class="middlebar1">
-                <form action="createProduct.php" method="post" enctype="multipart/form-data">
-                    <div class="adminbox">
-                    <h3 style="margin-top: 20px;">add a new product</h3>
-                    <input type="text" min="0" class="box" name="foto" placeholder="Foto URL">
-                    <input type="text" min="0" class="box" name="hotel" placeholder="hotel">
-                    <input type="text" min="0" class="box" name="locatie" placeholder="locatie(naam)">
-                    <input type="date" min="0" class="box" name="startDatum" placeholder="startdatum ">
-                    <input type="date" min="0" class="box" name="eindDatum" placeholder="einddatum ">
-                    <input type="text" min="0" class="box" name="beginplek" placeholder="Vliegen vanuit: ">
-                    <input type="text" min="0" class="box" name="eindplek" placeholder="eindplek ">
-                    <input type="text" min="0" class="box" name="regio" placeholder="Land ">
-                    <input type="number" min="0" class="box" name="kosten" value="<?php echo $result['kosten']; ?>" placeholder="kosten ">
-                    <input type="submit" class="submitbtn" name="add_product" value="hotel toevoegen">
-                    </div>
-                </form>
+            <form method="post" action="createProduct.php" enctype="multipart/form-data">
+                <h3>Add new item</h3>
+                <div class="form-group" style="padding-top: 30px;">
+                    <label>Foto URL</label>
+                    <input type="text" class="form-control" name="foto"/>
+                </div>
+                <div class="form-group">
+                    <label>hotel</label>
+                    <input type="text" class="form-control" name="hotel"/>
+                </div>
+                <div class="form-group">
+                    <label>locatie</label>
+                    <input type="text" class="form-control" name="locatie"/>
+                </div>
+                <div class="form-group">
+                    <label">startDatum</label>
+                    <input type="date" class="form-control" name="startDatum"/>
+                </div>
+                <div class="form-group">
+                    <label>eindDatum</label>
+                    <input type="date" class="form-control" name="eindDatum"/>
+                </div>
+                <div class="form-group">
+                    <label>beginplek</label>
+                    <input type="text" class="form-control" name="beginplek"/>
+                </div>
+                <div class="form-group">
+                    <label>eindplek</label>
+                    <input type="text" class="form-control" name="eindplek"/>
+                </div>
+                <div class="form-group">
+                    <label>regio</label>
+                    <input type="text" class="form-control" name="regio"/>
+                </div>
+                <div class="form-group">
+                    <label>kosten</label>
+                    <input type="number" min="0" class="box" name="kosten" value="<?php echo $result['kosten']; ?>" placeholder="enter the product price">
+                </div>
+                <input type="submit" class="submitbtn" name="add_product" value="hotel toevoegen">            </form>
             </div>
-            <div class="middlebar2">
+        <div class="middlebar2">
                 <?php
 
             $sql = "SELECT * FROM reizen";
@@ -91,57 +115,57 @@ if (isset($_SESSION['username']) == true) {
             $result = $stmt->fetchAll();
    
    ?>
-                <div class="product-display">
+        <div class="product-display">
                     
-                    <table class="product-display-table">
-                        <thead>
-                            <tr>
-                                <th>Locatie</th>
-                                <th>Hotel</th>
-                                <th>Regio</th>
-                                <th>Start Datum</th>
-                                <th>Eind Datum</th>
-                                <th>Kosten</th>
-                                <th>Begin Plek</th>
-                                <th>Eind Plek</th>
-                                <th>actie</th>
-                            </tr>
-                        </thead>
-                        <?php foreach($result as $value){ ?>
-                        <tr>
-                            <td>
-                                <?php echo $value['locatie']; ?>
-                            </td>
-                            <td>
-                                <?php echo $value['hotel']; ?>
-                            </td>
-                            <td>
-                                <?php echo $value['regio']; ?>
-                            </td>
-                            <td>
-                                <?php echo $value['startDatum']; ?>
-                            </td>
-                            <td>
-                                <?php echo $value['eindDatum']; ?>
-                            </td>
-                            <td>
-                                <?php echo $value['kosten']; ?>
-                            </td>
-                            <td>
-                                <?php echo $value['beginplek']; ?>
-                            </td>
-                            <td>
-                                <?php echo $value['eindplek']; ?>
-                            </td>
-                            <td>
-                                <a href="product_update.php?edit=<?php echo $value['reisID']; ?>" class="btn"> <i
-                                        class="fas fa-edit"></i> bewerk </a>
-                                <a href="deletepage.php?delete=<?php echo $value['reisID']; ?>" class="btn"> <i
-                                        class="fas fa-trash"></i> verwijder </a>
-                            </td>
-                        </tr>
-                        <?php } ?>
-                    </table>
+            <table class="product-display-table">
+                <thead>
+                    <tr>
+                        <th>Locatie</th>
+                        <th>Hotel</th>
+                        <th>Regio</th>
+                        <th>Start Datum</th>
+                        <th>Eind Datum</th>
+                        <th>Kosten</th>
+                        <th>Begin Plek</th>
+                        <th>Eind Plek</th>
+                        <th>actie</th>
+                    </tr>
+                </thead>
+                <?php foreach($result as $value){ ?>
+                <tr>
+                    <td>
+                        <?php echo $value['locatie']; ?>
+                    </td>
+                    <td>
+                        <?php echo $value['hotel']; ?>
+                    </td>
+                    <td>
+                        <?php echo $value['regio']; ?>
+                    </td>
+                    <td>
+                        <?php echo $value['startDatum']; ?>
+                    </td>
+                    <td>
+                        <?php echo $value['eindDatum']; ?>
+                    </td>
+                    <td>
+                        <?php echo $value['kosten']; ?>
+                    </td>
+                    <td>
+                        <?php echo $value['beginplek']; ?>
+                    </td>
+                    <td>
+                        <?php echo $value['eindplek']; ?>
+                    </td>
+                    <td>
+                        <a href="product_update.php?edit=<?php echo $value['reisID']; ?>" class="btn"> <i
+                                class="fas fa-edit"></i> bewerk </a>
+                        <a href="deletepage.php?delete=<?php echo $value['reisID']; ?>" class="btn"> <i
+                                class="fas fa-trash"></i> verwijder </a>
+                    </td>
+                </tr>
+                <?php } ?>
+            </table>
                 </div>
             </div>
         </div>
