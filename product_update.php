@@ -62,10 +62,10 @@ if(isset($_POST['update_product'])){
       <?php
       $select = "SELECT * FROM reizen WHERE reisID = :reisID";
       $stmt = $connect->prepare($select);
-      $stmt->bindParam('reisID', $_POST['reisID']);
+      $stmt->bindParam('reisID', $_GET['edit']);
       $stmt->execute();
       $result = $stmt->fetchAll();
-    foreach($result as $value) {  
+         foreach($result as $value) {  
 
 
    ?>
@@ -73,11 +73,11 @@ if(isset($_POST['update_product'])){
       <form method="post" action="">
           <div class="form-group">
               <label>Foto URL</label>
-              <input type="text"  class="form-control" name="foto" value=<?php echo value['foto'];?>>
+              <input type="text"  class="form-control" name="foto" value=<?php echo $value['foto'];?>>
           </div>
           <div class="form-group">
               <label>hotel</label>
-              <input type="text" class="form-control" value="<?php echo $result['hotel']; ?>"name="hotel"/>
+              <input type="text" class="form-control" value=<?php echo $result['hotel'];?> name="hotel"/>
           </div>
           <div class="form-group">
               <label>locatie</label>
