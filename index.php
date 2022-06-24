@@ -74,9 +74,16 @@ include('login.php');
             <label for="from">
                 <i class="ion-location"><i class="fa-solid fa-magnifying-glass"></i></i>
             </label>
-            <input type="search" placeholder="Waar wil je naar toe?">
-            <input type="submit" value="Zoeken" name="search" id="startsearch">
-        </form>
+           
+            <input type="search"  id="zoekterm" name="searchinput" placeholder="Waar wil je naar toe?">
+            <input type="submit" onclick="zoekLocatie();">
+
+            <script>
+                function zoekLocatie() {
+                    window.location.href = "reizen.php?search=" + document.querySelector("#zoekterm").value;
+                }
+            </script>
+</div>
     </div>
     <div class="form-popup" id="myForm">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
