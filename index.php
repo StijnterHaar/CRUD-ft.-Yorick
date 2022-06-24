@@ -76,7 +76,7 @@ include('login.php');
             </label>
            
             <input type="search"  id="zoekterm" name="searchinput" placeholder="Waar wil je naar toe?">
-            <input type="submit" onclick="zoekLocatie();">
+            <input type="submit" onclick="zoekLocatie();" value="Zoeken">
 
             <script>
                 function zoekLocatie() {
