@@ -15,12 +15,13 @@ if(isset($_POST['update_product'])){
    $beginplek = $_POST['beginplek'];
    $eindplek = $_POST['eindplek'];
    $foto = $_POST['foto'];
+   $retour = $_POST['retour'];
 
    if(empty($hotel) || empty($kosten) ){
       $message[] = 'please fill out all!';    
    }else{
 
-      $sql = "UPDATE reizen SET hotel='$hotel', kosten='$kosten', locatie='$locatie', eindDatum='$eindDatum', startDatum='$startDatum', regio='$regio', beginplek='$beginplek', eindplek='$eindplek', foto='$foto' WHERE reisID = '$reisID'";
+      $sql = "UPDATE reizen SET hotel='$hotel', kosten='$kosten', locatie='$locatie', retour='$retour', eindDatum='$eindDatum', startDatum='$startDatum', regio='$regio', beginplek='$beginplek', eindplek='$eindplek', foto='$foto' WHERE reisID = '$reisID'";
       $stmt = $connect->prepare($sql);
       $stmt->execute();
 
@@ -77,35 +78,39 @@ if(isset($_POST['update_product'])){
           </div>
           <div class="form-group">
               <label>hotel</label>
-              <input type="text" class="form-control" value=<?php echo $result['hotel'];?> name="hotel"/>
+              <input type="text" class="form-control" name="hotel" value=<?php echo $value['hotel'];?>>
           </div>
           <div class="form-group">
               <label>locatie</label>
-              <input type="text" class="form-control" name="locatie"/>
+              <input type="text" class="form-control" name="locatie" value=<?php echo $value['locatie'];?>>
           </div>
           <div class="form-group">
               <label">startDatum</label>
-              <input type="date" class="form-control" name="startDatum"/>
+              <input type="date" class="form-control" name="startDatum" value=<?php echo $value['startDatum'];?>>
           </div>
           <div class="form-group">
               <label>eindDatum</label>
-              <input type="date" class="form-control" name="eindDatum"/>
+              <input type="date" class="form-control" name="eindDatum" value=<?php echo $value['eindDatum'];?>>
           </div>
           <div class="form-group">
               <label>beginplek</label>
-              <input type="text" class="form-control" name="beginplek"/>
+              <input type="text" class="form-control" name="beginplek" value=<?php echo $value['beginplek'];?>>
           </div>
           <div class="form-group">
               <label>eindplek</label>
-              <input type="text" class="form-control" name="eindplek"/>
+              <input type="text" class="form-control" name="eindplek" value=<?php echo $value['eindplek'];?>>
           </div>
           <div class="form-group">
               <label>regio</label>
-              <input type="text" class="form-control" name="regio"/>
+              <input type="text" class="form-control" name="regio" value=<?php echo $value['regio'];?>>
           </div>
           <div class="form-group">
+                    <label>Retour</label>
+                    <input type="text" class="form-control" name="retour" placeholder="1 = Ja, 0 = Nee" value=<?php echo $value['retour'];?>>
+                </div>
+          <div class="form-group">
               <label>kosten</label>
-              <input type="number" min="0" class="box" name="kosten" value="<?php echo $result['kosten']; ?>" placeholder="enter the product price">
+              <input type="number" min="0" class="box" name="kosten" value=<?php echo $value['kosten'];?>>
           </div>
           <button type="submit" value="update product" name="update_product" class="btn btn-block btn-danger">Update</button>
       </form>

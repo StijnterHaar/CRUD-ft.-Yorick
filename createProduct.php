@@ -11,13 +11,15 @@
         $beginplek = $_POST['beginplek'];
         $eindplek = $_POST['eindplek'];
         $foto = $_POST['foto'];
+        $retour = $_POST['retour'];
 
         if(empty($kosten) || empty($locatie) || empty($regio)){
             header('Location: adminpage.php');
             exit();
         }else{
-            $sql = "INSERT INTO reizen(hotel, kosten, locatie, startDatum, eindDatum, beginplek, eindplek, regio, foto) VALUES (:hotel, :kosten, :locatie, :startDatum, :eindDatum, :beginplek, :eindplek, :regio, :foto)";
+            $sql = "INSERT INTO reizen(hotel, kosten, locatie, startDatum, eindDatum, beginplek, eindplek, regio, foto, retour) VALUES (:hotel, :kosten, :locatie, :startDatum, :eindDatum, :beginplek, :eindplek, :regio, :foto, :retour)";
             $stmt = $connect->prepare($sql);
+            $stmt->bindParam(':retour', $retour);
             $stmt->bindParam(':hotel', $hotel);
             $stmt->bindParam(':kosten', $kosten);
             $stmt->bindParam(':foto', $foto);

@@ -6,11 +6,11 @@ include 'includes/connect.php';
 session_start();
 
 
-if(isset($_SESSION['function']) == 1){
+if(isset($_SESSION['admin']) == 1){
     echo "Admin!";
 }
 else{
-    echo "Acess denied: ";
+    header("Location:index.php");
 }
 
 if (isset($_SESSION['username']) == true) {
@@ -101,8 +101,12 @@ if (isset($_SESSION['username']) == true) {
                     <input type="text" class="form-control" name="regio"/>
                 </div>
                 <div class="form-group">
+                    <label>Retour</label>
+                    <input type="text" class="form-control" name="retour" placeholder="1 = Ja, 0 = Nee"/>
+                </div>
+                <div class="form-group">
                     <label>kosten</label>
-                    <input type="number" min="0" class="box" name="kosten" value="<?php echo $result['kosten']; ?>" placeholder="enter the product price">
+                    <input type="number" min="0" class="box" name="kosten" placeholder="enter the product price">
                 </div>
                 <input type="submit" class="submitbtn" name="add_product" value="hotel toevoegen">            </form>
             </div>

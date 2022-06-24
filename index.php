@@ -69,8 +69,8 @@ include('login.php');
         </nav>
     </header>
     <div class="cover">
-        <h1 class="coverlabel" style="color: white; margin-bottom: 10px;">Ontdek wat er is</h1>
-        <div class="flex-form">
+        <h1 class="coverlabel" style="color: white; margin-bottom: 10px; text-shadow: 3px 2px #969595;">Ontdek wat er is</h1>
+        <form class="flex-form">
             <label for="from">
                 <i class="ion-location"><i class="fa-solid fa-magnifying-glass"></i></i>
             </label>
