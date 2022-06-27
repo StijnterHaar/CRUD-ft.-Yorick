@@ -817,9 +817,9 @@ a {
   justify-content: center;
   border: 1px solid;
   border-color: #66666640;
-  padding: 20px;
-  width: 190px;
-  height: 100px;
+  padding: 40px;
+  width: 250px;
+  height: 120px;
 }
 
 #scrollbarlijstauto::-webkit-scrollbar {
@@ -1153,7 +1153,7 @@ a {
 }
 
 .stay-info {
-  width: 500px;
+  width: 700px;
   justify-content: space-evenly;
   display: flex;
   background-color: #ef3f5a;

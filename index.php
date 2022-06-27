@@ -75,7 +75,7 @@ include('login.php');
                 <i class="ion-location"><i class="fa-solid fa-magnifying-glass"></i></i>
             </label>
            
-            <input type="search"  id="zoekterm" name="searchinput" placeholder="Waar wil je naar toe?">
+            <input type="search"  name="searchinput" placeholder="Waar wil je naartoe?">
             <input type="submit" onclick="zoekLocatie();" value="Zoeken">
 
             <script>
