@@ -1,6 +1,7 @@
 <?php
 // Initialize the session
 include('login.php');
+include('includes/connect.php'); // Includes Login Script
 ?>
 
 <!DOCTYPE html>
@@ -35,14 +36,12 @@ include('login.php');
                 <div class="header-group-item"><a href="index.php"><b>Home</b></a></div>
 
                 <div class="header-group-item login marginleft"><?php
-                include('includes/connect.php'); // Includes Login Script
                 if(isset($_SESSION['username']))
                 echo "<a href='accountsettings.php'>" . $_SESSION['username'] . "</a>";
             else
                 echo '<a class="catolag-list-items" onclick="openForm()">Login</a>';
                 ?> </div>
                 <div class="header-group-item login"><?php
-                include('includes/connect.php'); // Includes Login Script
                 if(isset($_SESSION['username']))
                 echo "<a style='display:none'>" . $_SESSION['username'] . "</a>";
             else
