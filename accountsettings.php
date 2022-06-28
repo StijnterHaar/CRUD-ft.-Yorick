@@ -1,5 +1,12 @@
+<?php
+// Initialize the session
+include('login.php');
+include('php/resetpassword.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+    
 
 <head>
     <meta charset="UTF-8">
@@ -19,25 +26,42 @@
     <header class="main-header">
         <nav class="header-top">
             <div class="header-left">
-                <a href="index.html">
+                <a href="index.php">
                     <img class="header-image" src="images/logo.png">
                 </a>
             </div>
             <div class="header-right">
-                <div class="header-group-item"><a href="verblijven.html">Bestemmingen</a></div>
-                <div class="header-group-item"><a href="klantenservice.html">Klantenservice</a></div>
-                <div class="header-group-item"><a href="index.html">Home</a></div>
+                <div class="header-group-item"><a href="reizen.php">Bestemmingen</a></div>
+                <div class="header-group-item"><a href="klantenservice.php">Klantenservice</a></div>
+                <div class="header-group-item"><a href="index.php">Home</a></div>
 
-                <div class="header-group-item login marginleft"><a onclick="openForm()">Login</a></div>
-                <div class="header-group-item login"><a onclick="openForm()">Register</a></div>
+                <div class="header-group-item login marginleft"><?php
+                include('includes/connect.php'); // Includes Login Script
+                if(isset($_SESSION['username']))
+                echo "<a href='accountsettings.php'>" . $_SESSION['username'] . "</a>";
+            else
+                echo '<a class="catolag-list-items" onclick="openForm()">Login</a>';
+                ?> </div>
+                <div class="header-group-item login"><?php
+                include('includes/connect.php'); // Includes Login Script
+                if(isset($_SESSION['username']))
+                echo "<a style='display:none'>" . $_SESSION['username'] . "</a>";
+            else
+                echo '<a class="catolag-list-items" href="register.php">Register</a>';
+                ?></div>
 
             </div>
         </nav>
+
         <nav class="header-bottom">
+
             <ul class="header-bottom-box">
-                <li class="header-bottom-item"><i class="fa-solid fa-bed"></i><a href="index.html">Hotels</a></li>
-                <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a href="#">Vluchten</a></i>
-                <li class="header-bottom-item "><i class="fa-solid fa-car"></i><a href="#">Autoverhuur</a></li>
+                <li class="header-bottom-item"><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a>
+                </li>
+                <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a
+                        href="vluchten.php">Vluchten</a></i>
+                <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="autoverhuur.php">Autoverhuur</a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -90,10 +114,26 @@
                 <div class="settings-container">
                     <div class="settings-icons"><span class="fa-solid fa-bell fa-xl settings-icon"></span></div>
                     <div class="settings-info" style="text-align: left;">
-                        <h2 style="padding-top: 25px; padding-left: 10px;">Email notificaties</h2>
-                        <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke notificaties</p>
-                        <a href="#" style="color: #467fd3; padding-left: 10px;">Beheer notificaties</a>
-                    </div>
+                    <div class="wrapper">
+                        <h2>Reset wachtwoord</h2>
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
+                            <div class="form-group">
+                                <label>Nieuw wachtwoord</label>
+                                <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
+                                <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+                                <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Submit">
+                                <a class="btn btn-link ml-2" href="welcome.php">Cancel</a>
+                            </div>
+                        </form>
+                    </div>    
+                                    </div>
                 </div>
                 <div class="settings-container">
                     <div class="settings-icons"><span class="fa-solid fa-credit-card fa-xl settings-icon"></span></div>
@@ -105,11 +145,11 @@
                     </div>
                 </div>
                 <div class="settings-container">
-                    <div class="settings-icons"><span class="fa-solid fa-egg fa-xl settings-icon"></span></div>
+                    <div class="settings-icons"><span class="fa-solid fa-book-atlas fa-xl settings-icon"></span></div>
                     <div class="settings-info" style="text-align: left;">
-                        <h2 style="padding-top: 25px; padding-left: 10px;">Easteregg</h2>
-                        <p style="padding-left: 10px; margin-bottom: 20px;">:)</p>
-                        <a href="#" style="color: blue; padding-left: 10px;"></a>
+                        <h2 style="padding-top: 25px; padding-left: 10px;">Boekingen</h2>
+                        <p style="padding-left: 10px; margin-bottom: 20px;">Hier kunt u al uw boekingen inzien</p>
+                        <a style="color: #467fd3; padding-left: 10px;" href="boekingen.php">Beheer boekingen</a>
                     </div>
                 </div>
                 <div class="settings-container">
@@ -117,7 +157,7 @@
                     <div class="settings-info" style="text-align: left;">
                         <h2 style="padding-top: 25px; padding-left: 10px;">Beveiliging</h2>
                         <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke beveiliging</p>
-                        <a href="#" style="color: blue; padding-left: 10px;">Beheer beveiliging</a>
+                        <a href="#" style="color: #467fd3; padding-left: 10px;">Beheer beveiliging</a>
                     </div>
                 </div>
 
@@ -132,9 +172,9 @@
                 <div id="footer-about" class="footer-columns footer-columns-large">
                     <h1>Ons adress</h1>
                     <address>
-                        <p><i class="fa-solid fa-location-dot"></i> 30/20, Verkhy street, Moscow, Russia</p>
-                        <p><i class="fa-solid fa-phone"></i> 7 (800) 555–35–35</p>
-                        <p><i class="fa-solid fa-envelope-circle-check"></i> noreply@reply.io</p>
+                        <p><i class="fa-solid fa-location-dot"></i> 30/20, Heyendaal, Nijmegen, The Netherlands</p>
+                        <p><i class="fa-solid fa-phone"></i> +31 6 13 26 34 33</p>
+                        <p><i class="fa-solid fa-envelope-circle-check"></i> Revera@gmail.com</p>
                         <p><i class="fa-solid fa-clock"></i> 8:00 AM – 8:00 PM</p>
                     </address>
                 </div>
@@ -179,16 +219,16 @@
                     <h1>Informatie</h1>
                     <ul class="footer-column-menu" role="menu">
                         <li class="footer-column-menu-item" role="menuitem">
-                            <a href="#" class="footer-column-menu-item-link">Over ons</a>
+                            <a href="overons.php" class="footer-column-menu-item-link">Over ons</a>
                         </li>
                         <li class="footer-column-menu-item" role="menuitem">
-                            <a href="#" class="footer-column-menu-item-link">Terms of Use</a>
+                            <a href="termsofuse.php" class="footer-column-menu-item-link">Terms of Use</a>
                         </li>
                         <li class="footer-column-menu-item">
-                            <a href="#" class="footer-column-menu-item-link" role="menuitem">Legal Information</a>
+                            <a href="legalinformation.php" class="footer-column-menu-item-link" role="menuitem">Legal Information</a>
                         </li>
                         <li class="footer-column-menu-item" role="menuitem">
-                            <a href="klantenservice.html" class="footer-column-menu-item-link">Stuur ons een
+                            <a href="klantenservice.php" class="footer-column-menu-item-link">Stuur ons een
                                 berichtje</a>
                         </li>
                         <li class="footer-column-menu-item" role="menuitem">

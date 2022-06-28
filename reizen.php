@@ -1,0 +1,194 @@
+<?php
+// Initialize the session
+include('login.php');
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+    
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://kit.fontawesome.com/cfd87a559f.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="sccs/test.scss">
+    <title>Revera.com</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+</head>
+
+<body>
+    <header class="main-header">
+        <nav class="header-top">
+            <div class="header-left">
+                <a href="index.php">
+                    <img class="header-image" src="images/logo.png">
+                </a>
+            </div>
+            <div class="header-right">
+                <div class="header-group-item"><a href="reizen.php">Bestemmingen</a></div>
+                <div class="header-group-item"><a href="klantenservice.php">Klantenservice</a></div>
+                <div class="header-group-item"><a href="index.php">Home</a></div>
+
+                <div class="header-group-item login marginleft"><?php
+                include('includes/connect.php'); // Includes Login Script
+                if(isset($_SESSION['username']))
+                echo "<a href='accountsettings.php'>" . $_SESSION['username'] . "</a>";
+            else
+                echo '<a class="catolag-list-items" onclick="openForm()">Login</a>';
+                ?> </div>
+                <div class="header-group-item login"><?php
+                include('includes/connect.php'); // Includes Login Script
+                if(isset($_SESSION['username']))
+                echo "<a style='display:none'>" . $_SESSION['username'] . "</a>";
+            else
+                echo '<a class="catolag-list-items" href="register.php">Register</a>';
+                ?></div>
+
+            </div>
+        </nav>
+
+        <nav class="header-bottom">
+
+            <ul class="header-bottom-box">
+                <li class="Menuitems" >
+                <i class="fa-solid fa-bars"></i>
+                </li>
+                <li class="header-bottom-item "><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a>
+                </li>
+                <li class="header-bottom-item selected"><i class="fa-solid fa-plane-departure"></i><a
+                        href="reizen.php">Vluchten</a></i>
+                <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="autoverhuur.php">Autoverhuur</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="form-popup" id="myForm">
+    <?php 
+        if(!empty($login_err)){
+            echo '<div class="alert alert-danger">' . $login_err . '</div>';
+        }        
+        ?>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="login-box">
+                <h1>Login</h1>
+                <div class="progress">
+                    <div class="progress-value"></div>
+                </div>
+
+                <div class="textbox">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                </div>
+
+                <div class="textbox">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input type="password" placeholder="Password" name="password" class="<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                </div>
+                <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                <input class="button" type="submit" name="login" value="Sign In">
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </div>
+        </form>
+    </div>
+    <div class="top-box">
+        <div class="box-container">
+            <div class="box-title">
+                <h1><center>Populaire vliegmaatschapijen</center></h1>
+            </div>
+            <ul class="locations-container2" id="scrollbarlijstauto">
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img  src="https://i0.wp.com/insideflyer.nl/wp-content/uploads/2019/05/KLM-logo.png?ssl=1">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Ryanair_logo_new.svg/1024px-Ryanair_logo_new.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EasyJet_logo.svg/1280px-EasyJet_logo.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/TUI_Logo_2016.svg/2560px-TUI_Logo_2016.svg.png">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Lufthansa_Logo_2018.svg/1280px-Lufthansa_Logo_2018.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Transavia_logo.svg/2560px-Transavia_logo.svg.png" style="width: 150px; height: 30px; margin-top: 10px;">
+                    </div>
+                </li>
+                
+
+            </ul>
+        </div>
+    <div class="stays-all">
+        <div class="stays">
+            <div class="popular-stays">
+                <?php
+                 $sql = "SELECT * FROM `reizen`";
+                 $stmt = $connect->prepare($sql);
+                 $stmt->execute();
+                 $result = $stmt->fetchAll();
+                 foreach ($result as $value) {
+                    ?>
+                    <div class="sugg">
+                    <img src=<?php echo $value['foto'];?> alt="LA" style="width:100%; height:180px;">
+                    <p><?php echo $value['locatie'];?></p>
+                </div>
+                <?php
+                 }
+                 ?>
+            </div>
+            <div class="stays2">
+                <div class="left">
+                    <p>Zoeken op stad:</p>
+                    <form class="left-search" name="search" method="post">
+            <input class="reverainput" name="term">
+            <button class="reverabutton" name="search" id="startsearch">Zoeken</button>
+         </form>
+                    <ul class="flightlist">
+                    <p><b>Wij vliegen zowel naar:</b> </p>
+                    <?php
+                    
+                        $sql2 = "SELECT DISTINCT * FROM `regio`";
+                        $stmt2 = $connect->prepare($sql2);
+                        $stmt2->execute();
+
+                        $producten = $stmt2->fetchAll();
+                        foreach ($producten as $product) {
+                            ?> <li><?php echo $product['stad']; ?>, <?php echo $product['land']; ?> </a></li> <?php
+                        }
+                        ?> 
+                    </ul>
+                </div>
+                <div class="right">
+                    <?php include('php/searchorgetall.php')?>
+                <ul>
+                <li>
+                </li>    
+                </ul>
+                
+                </div>
+            </div>
+</body>
+
+</html>
+<script src="javascript/code.js"></script>

@@ -1,5 +1,12 @@
+<?php
+// Initialize the session
+include('login.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
+    
 
 <head>
     <meta charset="UTF-8">
@@ -19,17 +26,29 @@
     <header class="main-header">
         <nav class="header-top">
             <div class="header-left">
-                <a href="index.html">
+                <a href="index.php">
                     <img class="header-image" src="images/logo.png">
                 </a>
             </div>
             <div class="header-right">
-                <div class="header-group-item"><a href="verblijven.html">Bestemmingen</a></div>
-                <div class="header-group-item"><a href="klantenservice.html">Klantenservice</a></div>
-                <div class="header-group-item"><a href="index.html"><b>Home</b></a></div>
+                <div class="header-group-item"><a href="reizen.php">Bestemmingen</a></div>
+                <div class="header-group-item"><a href="klantenservice.php">Klantenservice</a></div>
+                <div class="header-group-item"><a href="index.php"><a>Home</a></a></div>
 
-                <div class="header-group-item login marginleft"><a onclick="openForm()">Login</a></div>
-                <div class="header-group-item login"><a onclick="openForm()">Register</a></div>
+                <div class="header-group-item login marginleft"><?php
+                include('includes/connect.php'); // Includes Login Script
+                if(isset($_SESSION['username']))
+                echo "<a href='accountsettings.php'>" . $_SESSION['username'] . "</a>";
+            else
+                echo '<a class="catolag-list-items" onclick="openForm()">Login</a>';
+                ?> </div>
+                <div class="header-group-item login"><?php
+                include('includes/connect.php'); // Includes Login Script
+                if(isset($_SESSION['username']))
+                echo "<a style='display:none'>" . $_SESSION['username'] . "</a>";
+            else
+                echo '<a class="catolag-list-items" href="register.php">Register</a>';
+                ?></div>
 
             </div>
         </nav>
@@ -37,27 +56,22 @@
         <nav class="header-bottom">
 
             <ul class="header-bottom-box">
-                <li class="header-bottom-item selected"><i class="fa-solid fa-bed"></i><a href="index.html">Hotels</a>
+                <li class="header-bottom-item"><i class="fa-solid fa-bed"></i><a href="index.php">Hotels</a>
                 </li>
-                <li class="header-bottom-item "><i class="fa-solid fa-plane-departure"></i><a
-                        href="vluchten.html">Vluchten</a></i>
-                <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="autoverhuur.html">Autoverhuur</a>
+                <li class="header-bottom-item selected"><i class="fa-solid fa-plane-departure"></i><a
+                        href="vluchten.php">Vluchten</a></i>
+                <li class="header-bottom-item"><i class="fa-solid fa-car"></i><a href="autoverhuur.php">Autoverhuur</a>
                 </li>
             </ul>
         </nav>
     </header>
-    <div class="cover">
-        <h1 class="coverlabel" style="color: white; margin-bottom: 10px;">Ontdek wat er is</h1>
-        <form class="flex-form">
-            <label for="from">
-                <i class="ion-location"><i class="fa-solid fa-magnifying-glass"></i></i>
-            </label>
-            <input type="search" placeholder="Waar wil je naar toe?">
-            <input type="submit" value="Zoeken">
-        </form>
-    </div>
     <div class="form-popup" id="myForm">
-        <form action="validate.php" method="post">
+    <?php 
+        if(!empty($login_err)){
+            echo '<div class="alert alert-danger">' . $login_err . '</div>';
+        }        
+        ?>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="login-box">
                 <h1>Login</h1>
                 <div class="progress">
@@ -66,14 +80,16 @@
 
                 <div class="textbox">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    <input type="text" placeholder="Username" name="adminname" value="">
+                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
                 </div>
 
                 <div class="textbox">
                     <i class="fa fa-lock" aria-hidden="true"></i>
-                    <input type="password" placeholder="Password" name="password" value="">
+                    <input type="password" placeholder="Password" name="password" class="<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
                 </div>
-
+                <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
                 <input class="button" type="submit" name="login" value="Sign In">
                 <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </div>
@@ -82,8 +98,51 @@
     <div class="top-box">
         <div class="box-container">
             <div class="box-title">
-                <h1>Populaire Reizen</h1>
-                <p>Deze populaire bestemmingen hebben van alles te bieden</p>
+                <h1>Populaire vliegmaatschapijen</h1>
+            </div>
+            <ul class="locations-container2" id="scrollbarlijstauto">
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://i0.wp.com/insideflyer.nl/wp-content/uploads/2019/05/KLM-logo.png?ssl=1">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Ryanair_logo_new.svg/1024px-Ryanair_logo_new.svg.png"
+                            style="width: 150px; height: 30px; margin-top: 10px;">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EasyJet_logo.svg/1280px-EasyJet_logo.svg.png"
+                            style="width: 150px; height: 30px; margin-top: 10px;">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/TUI_Logo_2016.svg/2560px-TUI_Logo_2016.svg.png">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Lufthansa_Logo_2018.svg/1280px-Lufthansa_Logo_2018.svg.png"
+                            style="width: 150px; height: 30px; margin-top: 10px;">
+                    </div>
+                </li>
+                <li class="autolijst">
+                    <div class="autoverhuurlogos">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Transavia_logo.svg/2560px-Transavia_logo.svg.png"
+                            style="width: 150px; height: 30px; margin-top: 10px;">
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+        <div class="box-container">
+            <div class="box-title">
+                <h1>Populaire bestemmingen voor vliegvakanties</h1>
             </div>
             <ul class="locations-container">
                 <article class="card card--1">
@@ -172,7 +231,7 @@
                     <div class="card__info-hover">
 
                     </div>
-                    <div class="card__img"> <img src="cardimages/amsterdam.jpg"></div>
+                    <div class="card__img"><img src="cardimages/amsterdam.jpg"></div>
                     <a href="#" class="card_link">
                         <div class="card__img--hover"></div>
                     </a>
@@ -193,7 +252,7 @@
                         </svg>
 
                     </div>
-                    <div class="card__img"> <img src="cardimages/berlin.jpg"></div>
+                    <div class="card__img"><img src="cardimages/amsterdam.jpg"></div>
                     <a href="#" class="card_link">
                         <div class="card__img--hover"></div>
                     </a>
@@ -215,9 +274,9 @@
                 <div id="footer-about" class="footer-columns footer-columns-large">
                     <h1>Ons adress</h1>
                     <address>
-                        <p><i class="fa-solid fa-location-dot"></i> 30/20, Verkhy street, Moscow, Russia</p>
-                        <p><i class="fa-solid fa-phone"></i> 7 (800) 555–35–35</p>
-                        <p><i class="fa-solid fa-envelope-circle-check"></i> noreply@reply.io</p>
+                        <p><i class="fa-solid fa-location-dot"></i> 30/20, Heyendaal, Nijmegen, The Netherlands</p>
+                        <p><i class="fa-solid fa-phone"></i> +31 6 13 26 34 33</p>
+                        <p><i class="fa-solid fa-envelope-circle-check"></i> Revera@gmail.com</p>
                         <p><i class="fa-solid fa-clock"></i> 8:00 AM – 8:00 PM</p>
                     </address>
                 </div>
@@ -262,16 +321,16 @@
                     <h1>Informatie</h1>
                     <ul class="footer-column-menu" role="menu">
                         <li class="footer-column-menu-item" role="menuitem">
-                            <a href="#" class="footer-column-menu-item-link">Over ons</a>
+                            <a href="overons.php" class="footer-column-menu-item-link">Over ons</a>
                         </li>
                         <li class="footer-column-menu-item" role="menuitem">
-                            <a href="#" class="footer-column-menu-item-link">Terms of Use</a>
+                            <a href="termsofuse.php" class="footer-column-menu-item-link">Terms of Use</a>
                         </li>
                         <li class="footer-column-menu-item">
-                            <a href="#" class="footer-column-menu-item-link" role="menuitem">Legal Information</a>
+                            <a href="legalinformation.php" class="footer-column-menu-item-link" role="menuitem">Legal Information</a>
                         </li>
                         <li class="footer-column-menu-item" role="menuitem">
-                            <a href="klantenservice.html" class="footer-column-menu-item-link">Stuur ons een
+                            <a href="klantenservice.php" class="footer-column-menu-item-link">Stuur ons een
                                 berichtje</a>
                         </li>
                         <li class="footer-column-menu-item" role="menuitem">
