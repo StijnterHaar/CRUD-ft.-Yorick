@@ -1,6 +1,7 @@
 <?php
 // Initialize the session
 include('login.php');
+include('php/resetpassword.php');
 ?>
 
 <!DOCTYPE html>
@@ -113,10 +114,26 @@ include('login.php');
                 <div class="settings-container">
                     <div class="settings-icons"><span class="fa-solid fa-bell fa-xl settings-icon"></span></div>
                     <div class="settings-info" style="text-align: left;">
-                        <h2 style="padding-top: 25px; padding-left: 10px;">Email notificaties</h2>
-                        <p style="padding-left: 10px; margin-bottom: 20px;">Update je persoonlijke notificaties</p>
-                        <a href="#" style="color: #467fd3; padding-left: 10px;">Beheer notificaties</a>
-                    </div>
+                    <div class="wrapper">
+                        <h2>Reset wachtwoord</h2>
+                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
+                            <div class="form-group">
+                                <label>Nieuw wachtwoord</label>
+                                <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
+                                <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+                                <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-primary" value="Submit">
+                                <a class="btn btn-link ml-2" href="welcome.php">Cancel</a>
+                            </div>
+                        </form>
+                    </div>    
+                                    </div>
                 </div>
                 <div class="settings-container">
                     <div class="settings-icons"><span class="fa-solid fa-credit-card fa-xl settings-icon"></span></div>
